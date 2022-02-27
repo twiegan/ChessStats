@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Django REST framework 
+    # Django REST framework
     'rest_framework',
     # ChessStats application
     'chessStats.apps.ChessstatsConfig',
@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'chessStatsRestApi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testdb',
+        'NAME': 'chessStats',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '3306',
     }
