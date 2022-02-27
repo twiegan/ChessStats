@@ -1,5 +1,7 @@
 ## ChessStats
 
+Run the server using `python manage.py runserver`.
+
 ## Setup
 
 Venv holds the denpendencies the project needs to run. However,
