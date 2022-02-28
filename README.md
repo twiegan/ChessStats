@@ -1,6 +1,16 @@
 ## ChessStats
 
-Run the server using `python manage.py runserver`.
+Run the development server using `python chessStatsRestApi/manage.py runserver`.
+
+The development server cannot be used to deploy to Heroku. Therefore, we
+use gunicorn. To run with gunicorn locally use
+`gunicorn chessStatsRestApi.wsgi:application`.
+
+This same exact command is put into the Procfile after `web: `, which indicates
+the type of worker being used. Heroku uses the Procfile to determine which command
+to run to start the app.
+Heroku can now be run locally using `heroku local`. Since this works correctly,
+we should now deploy to heroku.
 
 ## Setup
 
