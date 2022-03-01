@@ -46,3 +46,12 @@ added to the list output by `python -m pip freeze`.
 This means running `python -m pip freeze > requirements.txt` will pipe
 those results to `requirements.txt` and update it with the new dependency
 info.
+
+# To open our db in MySQL
+
+Go to the app on heroku, navigate to the settings tab, and click the
+'Reveal Config Vars' button. The key shown for the clearDB is of the form
+'mysql://\<username\>:\<password\>@\<hostname\>/\<schema\>?reconnect=true'
+
+Paste each of these into their repective text entries in a new connection
+on MySQL workbench to connect to the database from your machine.
