@@ -22,7 +22,8 @@ The folder itself should already be in `.gitignore`.
 
 Run `python3 -m venv ./venv` from the project folder directory to create your new venv folder.
 
-Run `source venv/bin/activate` to activate the venv.
+Run `source venv/bin/activate` to activate the venv for iOS, or `venv\Scripts\activate` for Windows.
+
 
 The command `which python` should now show a path ending in `venv/bin/python`.
 This confirms that the app is now running in the venv.
