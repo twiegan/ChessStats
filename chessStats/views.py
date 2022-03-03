@@ -8,6 +8,9 @@ from rest_framework import status
 from chessStats.models import Player
 from chessStats.serializers import PlayerSerializer
 
+from chessStats.models import Test
+from chessStats.serializers import TestSerializer
+
 # Create your views here.
 
 
@@ -17,3 +20,10 @@ def player_list(request):
         players = Player.objects.all()
         players_serializer = PlayerSerializer(players, many=True)
         return JsonResponse(players_serializer.data, safe=False)
+
+@csrf_exempt
+def test_list(request):
+    if request.method == 'GET':
+        shravan = Test.objects.all()
+        shravan_serializer = TestSerializer(shravan, many=True)
+        return JsonResponse(shravan_serializer.data, safe=False)

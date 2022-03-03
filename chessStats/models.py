@@ -13,3 +13,9 @@ class Player(models.Model):
         max_length=2,
         blank=False,
         default='')
+
+class Test(models.Model):
+    Shravan = models.IntegerField(
+        primary_key=True,
+        default=0
+    )

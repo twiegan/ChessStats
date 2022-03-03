@@ -4,4 +4,5 @@ from chessStats import views
 
 urlpatterns = [
   re_path(r'^players/$', views.player_list),
+  re_path(r'^test/$', views.test_list)
 ]
