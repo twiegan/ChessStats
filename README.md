@@ -1,18 +1,5 @@
 # ChessStats
 
-## Recap: Main Commands
-
-- `python3 -m venv ./venv`
-- `source venv/bin/activate`
-- `python -m pip install -r requirements.txt`
-
-- `python manage.py runserver`
-- `gunicorn chessStatsRestApi.wsgi:application`
-- `heroku local`
-
-- `git push origin master`
-- `git push heroku master`
-
 ## Running the app
 
 Run the development server locally using `python manage.py runserver`.
