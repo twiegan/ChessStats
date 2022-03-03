@@ -1,4 +1,49 @@
+
+# Backend ignores
 venv/
 chessStatsRestApi/.env
 chessStatsRestApi/__pycache__
 chessStats/__pycache__
+
+# Frontend ignores
+
+# Compiled output
+/Frontend/chess-app/dist
+/Frontend/chess-app/tmp
+/Frontend/chess-app/out-tsc
+/Frontend/chess-app/bazel-out
+
+# Node
+/Frontend/chess-app/node_modules
+/Frontend/chess-appnpm-debug.log
+/Frontend/chess-appyarn-error.log
+
+# IDEs and editors
+/Frontend/chess-app.idea/
+/Frontend/chess-app.project
+/Frontend/chess-app.classpath
+/Frontend/chess-app.c9/
+/Frontend/chess-app*.launch
+/Frontend/chess-app.settings/
+/Frontend/chess-app*.sublime-workspace
+
+# Visual Studio Code
+/Frontend/chess-app.vscode/*
+/Frontend/chess-app!.vscode/settings.json
+/Frontend/chess-app!.vscode/tasks.json
+/Frontend/chess-app!.vscode/launch.json
+/Frontend/chess-app!.vscode/extensions.json
+/Frontend/chess-app.history/*
+
+# Miscellaneous
+/Frontend/chess-app/.angular/cache
+/Frontend/chess-app.sass-cache/
+/Frontend/chess-app/connect.lock
+/Frontend/chess-app/coverage
+/Frontend/chess-app/libpeerconnection.log
+/Frontend/chess-apptestem.log
+/Frontend/chess-app/typings
+
+# System files
+/Frontend/chess-app.DS_Store
+/Frontend/chess-appThumbs.db
