@@ -59,5 +59,7 @@ This means you have to run two separate commands at each push.
 
 The first, `git push origin master`, pushes to github like normal.
 
-The second, `git push heroku master`, pushes the code to heroku's private git repositories and redeploys the app.
+
+
+The second,`heroku git:remote --app infinite-river-70119` and `git push heroku master`, pushes the code to heroku's private git repositories and redeploys the app.
 Make sure that the contents of `requirements.txt` have been updated if new dependencies were added or else this redeploy will not work.
