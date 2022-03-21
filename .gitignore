@@ -1,2 +1,4 @@
 venv/
 chessStatsRestApi/.env
+chessStatsRestApi/__pycache__
+chessStats/__pycache__
