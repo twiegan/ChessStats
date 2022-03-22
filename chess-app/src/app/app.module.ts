@@ -11,7 +11,14 @@ import { SearchComponent } from './search';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatInputModule} from '@angular/material/input';
+
+const mat = [
+  MatFormFieldModule,
+  MatInputModule,
+];
 
 @NgModule({
   declarations: [
@@ -20,15 +27,17 @@ import { MatSliderModule } from '@angular/material/slider';
     EntryComponent,
     FollowedComponent,
     LoginComponent,
-    SearchComponent
-
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    appRoutingModule
+    appRoutingModule,
+    ...mat,
   ],
-  providers: [],
+  exports: [
+    ...mat,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
