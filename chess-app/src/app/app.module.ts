@@ -29,11 +29,7 @@ const mat = [
     MatchEntry,
     FollowedComponent,
     LoginComponent,
-<<<<<<< HEAD
     SearchComponent,
-=======
-    SearchComponent
->>>>>>> 24c38c5cfe8ad3ee59b3616b6e333a5d4f8b0e24
   ],
   imports: [
     BrowserModule,
