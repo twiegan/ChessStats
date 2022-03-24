@@ -10,7 +10,7 @@ import { MatchEntry } from './matchEntry';
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'playerEntry', component: PlayerEntry },
-    { path: 'playerEntry', component: MatchEntry },
+    { path: 'matchEntry', component: MatchEntry },
     { path: 'followed', component: FollowedComponent },
     { path: 'login', component: LoginComponent },
     { path: 'search', component: SearchComponent },
