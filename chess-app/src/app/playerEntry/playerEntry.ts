@@ -9,14 +9,14 @@ import { PlayersService } from '../services/players.service';
 
 export class PlayerEntry {
   playerId = new FormControl('', [Validators.required]);
-  title = new FormControl('', [Validators.required, Validators.maxLength(2), Validators.minLength(2)]);
+  title = new FormControl('', [Validators.maxLength(2)]);
 
   getErrorMessageTitle() {
     if (this.title.hasError('required')) {
       return 'You must enter a value';
     }
-    if (this.title.hasError('minlength')) {
-      return 'Title must be 2 characters long';
+    if (this.title.hasError('maxlength')) {
+      return 'Title can\'t be longer than 2 characters';
     }
     return '';
   }

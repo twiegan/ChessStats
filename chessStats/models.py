@@ -11,7 +11,7 @@ class Player(models.Model):
         default='')
     title = models.CharField(
         max_length=2,
-        blank=False,
+        blank=True,
         default='')
 
 class Test(models.Model):

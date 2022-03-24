@@ -21,9 +21,8 @@
       matInput
       placeholder="GM"
       [formControl]="title"
-      minlength="2"
+      minlength="0"
       maxlength="2"
-      required
     />
     <mat-error *ngIf="title.invalid">{{ getErrorMessageTitle() }}</mat-error>
   </mat-form-field>
