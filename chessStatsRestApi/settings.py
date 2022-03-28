@@ -70,6 +70,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
+    'https://chess-app-3ec86.web.app',
 )
 
 ROOT_URLCONF = 'chessStatsRestApi.urls'
