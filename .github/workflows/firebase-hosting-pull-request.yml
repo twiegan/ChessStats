@@ -14,3 +14,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHESS_APP_3EC86 }}'
           projectId: chess-app-3ec86
+          entrypoint: /chess-app
