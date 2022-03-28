@@ -17,4 +17,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHESS_APP_3EC86 }}'
           channelId: live
           projectId: chess-app-3ec86
-          entryPoint: /chess-app
+          entryPoint: ./chess-app
