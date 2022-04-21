@@ -20,6 +20,24 @@ def player_list(request):
         players = Player.objects.all()
         players_serializer = PlayerSerializer(players, many=True)
         return JsonResponse(players_serializer.data, safe=False)
+    elif request.method == 'POST':
+        player_data = JSONParser().parse(request)
+        player_serializer = PlayerSerializer(data=player_data)
+        if player_serializer.is_valid():
+            player_serializer.save()
+            return JsonResponse(player_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt
+def player_detail(request, player_id):
+    if request.method == 'GET':
+        print("Trying to call player_detail function")
+        try:
+            player = Player.objects.get(pk = player_id)
+            player_serializer = PlayerSerializer(player)
+            return JsonResponse(player_serializer.data)
+        except Player.DoesNotExist:
+            return JsonResponse({'message': 'The player does not exist'}, status=status.HTTP_404_NOT_FOUND)
 
 @csrf_exempt
 def test_list(request):
@@ -27,3 +45,5 @@ def test_list(request):
         shravan = Test.objects.all()
         shravan_serializer = TestSerializer(shravan, many=True)
         return JsonResponse(shravan_serializer.data, safe=False)
+
+

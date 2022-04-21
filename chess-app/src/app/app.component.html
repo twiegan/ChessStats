@@ -1,21 +1,48 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-flat-button routerLink="/" color="primary">
+      ♟️ Chess Stats
+    </button>
+    <button mat-flat-button routerLink="/playerEntry" color="primary">
+      Player Entry
+    </button>
+    <button mat-flat-button routerLink="/matchEntry" color="primary">
+      Match Entry
+    </button>
+    <button mat-flat-button routerLink="/followed" color="primary">
+      Followed
+    </button>
+    <button mat-flat-button routerLink="/search" color="primary">Search</button>
+    <button
+      mat-flat-button
+      routerLink="/login"
+      color="primary"
+      style="margin-left: auto; margin-right: 0"
+    >
+      Login
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/">Home</a>
       <a class="nav-item nav-link" routerLink="/login">Login</a>
-      <a class="nav-item nav-link" routerLink="/entry">Entry</a>
+      <a class="nav-item nav-link" routerLink="/playerEntry">Player Entry</a>
+      <a class="nav-item nav-link" routerLink="/matchEntry">Match Entry</a>
       <a class="nav-item nav-link" routerLink="/followed">Followed</a>
       <a class="nav-item nav-link" routerLink="/search">Search</a>
   </div>
-</nav>
+</nav> -->
 
 <!-- main content container -->
 <div class="jumbotron">
   <div class="container">
-      <div class="row">
-          <div class="col-sm-8 offset-sm-2">
-              <router-outlet></router-outlet>
-          </div>
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2">
+        <router-outlet></router-outlet>
       </div>
+    </div>
   </div>
 </div>

@@ -8,7 +8,7 @@ chessStats/__pycache__
 # Frontend ignores
 
 # Compiled output
-chess-app/dist
+#chess-app/dist
 chess-app/tmp
 chess-app/out-tsc
 chess-app/bazel-out
