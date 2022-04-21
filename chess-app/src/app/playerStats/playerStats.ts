@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AnyForUntypedForms, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { PlayersService } from '../services/players.service';
+import { PlayerService } from '../services/player.service';
 @Component({
   templateUrl: 'playerStats.component.html',
 })
@@ -17,17 +17,13 @@ export class PlayerStats {
     return '';
   }
 
-  private player: any;
-  public strPlayer: any;
-  constructor(private service: PlayersService, private snackBar: MatSnackBar) {
-        
-  }
+  public player: any;
+  constructor(private service: PlayerService, private snackBar: MatSnackBar) {}
 
   test(playerId: any) {
     this.service.getPlayer(playerId.value).subscribe(response => {
-        this.player = response;
-        this.strPlayer = JSON.stringify(response, null, 4).replace(/\\n/g, "newline");
-        return this.strPlayer;
+        this.player = JSON.stringify(response, null, 4).replace(/\\n/g, "newline");
+        return this.player;
     }) 
   }
 }
