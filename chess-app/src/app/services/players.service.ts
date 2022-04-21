@@ -15,6 +15,10 @@ export class PlayersService {
     return this.http.get<Player[]>(this.url);
   }
 
+  public getPlayer(playerId: any): Observable<Player> {
+    return this.http.get<Player>(this.url + playerId)
+  }
+
   public addPlayer(data: any) {
     return this.http.post(this.url, data);
   }

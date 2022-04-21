@@ -9,6 +9,7 @@ import { MatchEntry } from './matchEntry';
 import { FollowedComponent } from './followed';
 import { LoginComponent } from './login';
 import { SearchComponent } from './search';
+import { PlayerStats } from './playerStats';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -44,6 +45,7 @@ const mat = [
     FollowedComponent,
     LoginComponent,
     SearchComponent,
+    PlayerStats,
   ],
   imports: [
     BrowserModule,
