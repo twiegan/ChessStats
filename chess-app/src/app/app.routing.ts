@@ -8,6 +8,7 @@ import { SearchComponent } from './search';
 import { MatchEntry } from './matchEntry';
 import { OpeningEntry } from './openingEntry';
 import { EventEntry } from './eventEntry';
+import { PlayerStats } from './playerStats';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'search', component: SearchComponent },
     { path: 'openingEntry', component: OpeningEntry },
     { path: 'eventEntry', component: EventEntry },
+    { path: 'playerStats', component: PlayerStats },
     
 
     // otherwise redirect to home

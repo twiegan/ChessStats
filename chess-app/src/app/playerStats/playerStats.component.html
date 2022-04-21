@@ -1,0 +1,31 @@
+<div style="text-align: center" class="container">
+  <div style="margin-top: 1%">
+    <h1>Player Stats Page</h1>
+  </div>
+  <div id="myData"></div>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>White</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="45"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <div class="button">
+    <button
+      style="margin-top: 1%"
+      mat-raised-button
+      color="primary"
+      [disabled]="playerId.invalid"
+      (click)="test(playerId)"
+    >
+      Submit
+    </button>
+  </div>
+  <div style="white-space: pre">{{ strPlayer }}</div>
+</div>
