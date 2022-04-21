@@ -1,14 +1,16 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home';
-import { EntryComponent } from './entry';
+import { PlayerEntry } from './playerEntry';
 import { FollowedComponent } from './followed';
 import { LoginComponent } from './login';
 import { SearchComponent } from './search';
+import { MatchEntry } from './matchEntry';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'entry', component: EntryComponent },
+    { path: 'playerEntry', component: PlayerEntry },
+    { path: 'matchEntry', component: MatchEntry },
     { path: 'followed', component: FollowedComponent },
     { path: 'login', component: LoginComponent },
     { path: 'search', component: SearchComponent },
