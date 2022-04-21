@@ -4,12 +4,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { PlayerService } from '../services/player.service';
 @Component({
-  templateUrl: 'playerEntry.component.html',
+  templateUrl: 'eventEntry.component.html',
 })
 
-export class PlayerEntry {
+export class EventEntry {
   playerId = new FormControl('', [Validators.required]);
-  title = new FormControl('', [Validators.maxLength(3)]);
+  title = new FormControl('', [Validators.maxLength(2)]);
 
   getErrorMessageTitle() {
     if (this.title.hasError('required')) {

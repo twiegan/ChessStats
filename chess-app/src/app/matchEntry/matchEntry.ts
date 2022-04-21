@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AnyForUntypedForms, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { PlayersService } from '../services/players.service';
+import { PlayerService } from '../services/player.service';
 @Component({
   selector: 'matchEntry.component.html',
   templateUrl: 'matchEntry.component.html',
@@ -10,6 +10,9 @@ import { PlayersService } from '../services/players.service';
 
 export class MatchEntry {
   date = new FormControl('', [Validators.required]);
+  white = new FormControl('', [Validators.required]);
+  black = new FormControl('', [Validators.required]);
+
   playerId = new FormControl('', [Validators.required]);
   title = new FormControl('', [Validators.maxLength(2)]);
 
@@ -42,7 +45,7 @@ export class MatchEntry {
   }
 
   private player: any;
-  constructor(private service: PlayersService, private snackBar: MatSnackBar) {
+  constructor(private service: PlayerService, private snackBar: MatSnackBar) {
     this.player = {};
   }
 
@@ -68,7 +71,7 @@ export class MatchEntry {
 
 @Component({
   selector: 'success-component',
-  templateUrl: 'successIndicator.component.html',
+  templateUrl: '../successIndicator.component.html',
   styles: [
     `
     .snackBar {
@@ -81,7 +84,7 @@ export class successSnackBarComponent { }
 
 @Component({
   selector: 'fail-component',
-  templateUrl: 'failIndicator.component.html',
+  templateUrl: '../failIndicator.component.html',
   styles: [
     `
     .snackBar {

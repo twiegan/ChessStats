@@ -1,37 +1,37 @@
 <div style="text-align: center" class="container">
   <div style="margin-top: 1%">
-    <h1>Player Entry</h1>
+    <h1>Opening Entry</h1>
   </div>
   <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
-    <mat-label>Enter player id</mat-label>
+    <mat-label>Enter Opening id</mat-label>
     <input
       matInput
       placeholder="chessStats348"
-      [formControl]="playerId"
+      [formControl]="openingId"
       maxlength="45"
       required
     />
-    <mat-error *ngIf="playerId.invalid">{{
-      getErrorMessagePlayerid()
+    <mat-error *ngIf="openingId.invalid">{{
+      getErrorMessageOpeningid()
     }}</mat-error>
   </mat-form-field>
   <mat-form-field style="margin-top: 1%; margin-left: 5px" appearance="fill">
-    <mat-label>Enter player title</mat-label>
+    <mat-label>Enter Opening Name</mat-label>
     <input
       matInput
-      placeholder="GM"
-      [formControl]="title"
-      minlength="0"
-      maxlength="3"
+      placeholder="Shravan's game"
+      [formControl]="name"
+      maxlength="45"
+      required
     />
-    <mat-error *ngIf="title.invalid">{{ getErrorMessageTitle() }}</mat-error>
+    <mat-error *ngIf="name.invalid">{{ getErrorMessageName() }}</mat-error>
   </mat-form-field>
   <div class="button">
     <button
       style="margin-top: 1%"
       mat-raised-button
       color="primary"
-      [disabled]="playerId.invalid || title.invalid"
+      [disabled]="openingId.invalid || name.invalid"
       (click)="addPlayer()"
     >
       Submit

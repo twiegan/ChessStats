@@ -8,6 +8,9 @@ from rest_framework import status
 from chessStats.models import Player
 from chessStats.serializers import PlayerSerializer
 
+from chessStats.models import Opening
+from chessStats.serializers import OpeningSerializer
+
 from chessStats.models import Test
 from chessStats.serializers import TestSerializer
 
@@ -38,6 +41,17 @@ def player_detail(request, player_id):
             return JsonResponse(player_serializer.data)
         except Player.DoesNotExist:
             return JsonResponse({'message': 'The player does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+@csrf_exempt
+def opening_list(request):
+    print("trying to call opening_list")
+    if request.method == 'POST':
+        opening_data = JSONParser().parse(request)
+        opening_serializer = OpeningSerializer(data=opening_data)
+        if opening_serializer.is_valid():
+            opening_serializer.save()
+            return JsonResponse(opening_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(opening_serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 def test_list(request):
