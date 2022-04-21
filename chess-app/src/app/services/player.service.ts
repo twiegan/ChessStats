@@ -7,7 +7,7 @@ import { Player } from './player'
 @Injectable({
   providedIn: 'root'
 })
-export class PlayersService {
+export class PlayerService {
   url = "https://infinite-river-70119.herokuapp.com/players/"
   constructor(private http: HttpClient) { }
 

@@ -6,6 +6,8 @@ import { FollowedComponent } from './followed';
 import { LoginComponent } from './login';
 import { SearchComponent } from './search';
 import { MatchEntry } from './matchEntry';
+import { OpeningEntry } from './openingEntry';
+import { EventEntry } from './eventEntry';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
     { path: 'followed', component: FollowedComponent },
     { path: 'login', component: LoginComponent },
     { path: 'search', component: SearchComponent },
+    { path: 'openingEntry', component: OpeningEntry },
+    { path: 'eventEntry', component: EventEntry },
     
 
     // otherwise redirect to home

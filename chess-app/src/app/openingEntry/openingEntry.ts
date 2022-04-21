@@ -2,44 +2,44 @@ import { Component } from '@angular/core';
 import { AnyForUntypedForms, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { PlayerService } from '../services/player.service';
+import { OpeningService } from '../services/opening.service';
 @Component({
-  templateUrl: 'playerEntry.component.html',
+  templateUrl: 'openingEntry.component.html',
 })
 
-export class PlayerEntry {
-  playerId = new FormControl('', [Validators.required]);
-  title = new FormControl('', [Validators.maxLength(3)]);
+export class OpeningEntry {
+  openingId = new FormControl('', [Validators.required, Validators.maxLength(45)]);
+  name = new FormControl('', [Validators.required, Validators.maxLength(45)]);
 
-  getErrorMessageTitle() {
-    if (this.title.hasError('required')) {
+  getErrorMessageOpeningid() {
+    if (this.name.hasError('required')) {
       return 'You must enter a value';
     }
-    if (this.title.hasError('maxlength')) {
-      return 'Title can\'t be longer than 2 characters';
+    if (this.name.hasError('maxlength')) {
+      return 'Title can\'t be longer than 45 characters';
     }
     return '';
   }
 
-  getErrorMessagePlayerid() {
-    if (this.playerId.hasError('required')) {
+  getErrorMessageName() {
+    if (this.name.hasError('required')) {
       return 'You must enter a value';
     }
     return '';
   }
 
-  private player: any;
-  constructor(private service: PlayerService, private snackBar: MatSnackBar) {
-    this.player = {};
+  private opening: any;
+  constructor(private service: OpeningService, private snackBar: MatSnackBar) {
+    this.opening = {};
   }
 
   addPlayer() {
-    console.log(this.playerId.value);
-    console.log(this.title.value);
-    this.player = { "player_id": this.playerId.value, "title": this.title.value };
-    this.service.addPlayer(this.player).subscribe(response => {
+    console.log(this.openingId.value);
+    console.log(this.name.value);
+    this.opening = { "opening_id": this.openingId.value, "name": this.name.value };
+    this.service.addOpening(this.opening).subscribe(response => {
       console.log(response);
-      if (Object.keys(response).length === Object.keys(this.player).length) {
+      if (Object.keys(response).length === Object.keys(this.opening).length) {
         this.snackBar.openFromComponent(successSnackBarComponent, {
           duration: 2000,
         });
