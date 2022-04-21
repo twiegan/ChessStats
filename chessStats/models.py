@@ -1,4 +1,4 @@
-from tkinter import E
+# from tkinter import E
 from django.db import models
 
 # Create your models here.
