@@ -11,6 +11,7 @@ import { LoginComponent } from './login';
 import { SearchComponent } from './search';
 import { OpeningEntry } from './openingEntry';
 import { EventEntry } from './eventEntry';
+import { PlayerStats } from './playerStats';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -48,6 +49,7 @@ const mat = [
     SearchComponent,
     OpeningEntry,
     EventEntry,
+    PlayerStats,
   ],
   imports: [
     BrowserModule,
