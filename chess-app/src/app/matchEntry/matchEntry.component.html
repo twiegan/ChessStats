@@ -1,5 +1,131 @@
 <div style="text-align: center" class="container">
   <div style="margin-top: 1%">
-    <h1>Match Entry Page</h1>
+    <h1>Match Entry</h1>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [formControl]="date" [matDatepicker]="picker"/>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
+    <mat-error *ngIf="date.invalid">{{
+      getErrorMessageDate()
+    }}</mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>White</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>Black</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>Turns</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>Termination</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>Time Control</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>Winner</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>Opening</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+    <mat-label>Event</mat-label>
+    <input
+      matInput
+      placeholder="chessStats348"
+      [formControl]="playerId"
+      maxlength="15"
+      required
+    />
+    <mat-error *ngIf="playerId.invalid">{{
+      getErrorMessagePlayerid()
+    }}</mat-error>
+  </mat-form-field>
+  <div class="button">
+    <button
+      style="margin-top: 1%"
+      mat-raised-button
+      color="primary"
+      [disabled]="playerId.invalid || title.invalid"
+      (click)="addPlayer()"
+    >
+      Submit
+    </button>
   </div>
 </div>
