@@ -33,7 +33,7 @@ export class OpeningEntry {
     this.opening = {};
   }
 
-  addPlayer() {
+  addOpening() {
     console.log(this.openingId.value);
     console.log(this.name.value);
     this.opening = { "opening_id": this.openingId.value, "name": this.name.value };
