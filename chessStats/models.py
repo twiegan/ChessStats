@@ -9,22 +9,44 @@ class Player(models.Model):
         max_length=45,
         blank=False,
         primary_key=True,
-        default='')
+        default=''
+    )
     title = models.CharField(
         max_length=3,
         blank=True,
-        default='')
-
-class Opening(models.Model):
-    opening_id = models.CharField(
+        default=''
+    )
+    elo = models.CharField(
         max_length=45,
         blank=False,
+        default=''
+    )
+
+class Opening(models.Model):
+    opening_id = models.IntegerField(
+        max_length=11,
+        blank=False,
         primary_key=True,
-        default='')
+        default=0
+    )
     name = models.CharField(
         max_length=45,
         blank=False,
-        default='')
+        default=''
+    )
+
+class Event(models.Model):
+    event_id = models.IntegerField(
+        max_length=11,
+        blank=False,
+        default=0
+    )
+    name = models.CharField(
+        max_length=45,
+        blank=False,
+        primary_key=True,
+        default=''
+    )
 
 class Test(models.Model):
     Shravan = models.IntegerField(

@@ -9,6 +9,7 @@ import { Player } from './player'
 })
 export class PlayerService {
   url = "https://infinite-river-70119.herokuapp.com/players/"
+  ret: any
   constructor(private http: HttpClient) { }
 
   public getPlayers(): Observable<Player[]> {
@@ -17,5 +18,7 @@ export class PlayerService {
 
   public addPlayer(data: any) {
     return this.http.post(this.url, data);
+    // console.log(this.ret);
+    // return this.ret;
   }
 }
