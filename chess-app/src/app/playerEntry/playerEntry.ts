@@ -10,6 +10,7 @@ import { PlayerService } from '../services/player.service';
 export class PlayerEntry {
   playerId = new FormControl('', [Validators.required]);
   title = new FormControl('', [Validators.maxLength(3)]);
+  elo = new FormControl('', [Validators.required, Validators.max(3000)]);
 
   getErrorMessageTitle() {
     if (this.title.hasError('required')) {
@@ -28,6 +29,16 @@ export class PlayerEntry {
     return '';
   }
 
+  getErrorMessageElo() {
+    if (this.elo.hasError('required')) {
+      return 'You must enter a value';
+    }
+    if (this.elo.hasError('max')) {
+      return 'Elo can\'t be larger than 3000';
+    }
+    return '';
+  }
+
   private player: any;
   constructor(private service: PlayerService, private snackBar: MatSnackBar) {
     this.player = {};
@@ -36,7 +47,7 @@ export class PlayerEntry {
   addPlayer() {
     console.log(this.playerId.value);
     console.log(this.title.value);
-    this.player = { "player_id": this.playerId.value, "title": this.title.value };
+    this.player = { "player_id": this.playerId.value, "title": this.title.value, "elo": this.elo.value };
     this.service.addPlayer(this.player).subscribe(response => {
       console.log(response);
       if (Object.keys(response).length === Object.keys(this.player).length) {

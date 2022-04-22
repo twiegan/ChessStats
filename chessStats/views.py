@@ -11,6 +11,9 @@ from chessStats.serializers import PlayerSerializer
 from chessStats.models import Opening
 from chessStats.serializers import OpeningSerializer
 
+from chessStats.models import Event
+from chessStats.serializers import EventSerializer
+
 from chessStats.models import Test
 from chessStats.serializers import TestSerializer
 
@@ -45,13 +48,32 @@ def player_detail(request, player_id):
 @csrf_exempt
 def opening_list(request):
     print("trying to call opening_list")
-    if request.method == 'POST':
+    if request.method == 'GET':
+        openings = Opening.objects.all()
+        opening_serializer = OpeningSerializer(openings, many=True)
+        return JsonResponse(opening_serializer.data, safe=False)
+    elif request.method == 'POST':
         opening_data = JSONParser().parse(request)
         opening_serializer = OpeningSerializer(data=opening_data)
         if opening_serializer.is_valid():
             opening_serializer.save()
             return JsonResponse(opening_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(opening_serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt
+def event_list(request):
+    print("trying to call event_list")
+    if request.method == 'GET':
+        events = Event.objects.all()
+        event_serializer = EventSerializer(events, many=True)
+        return JsonResponse(event_serializer.data, safe=False)
+    elif request.method == 'POST':
+        event_data = JSONParser().parse(request)
+        event_serializer = EventSerializer(data=event_data)
+        if event_serializer.is_valid():
+            event_serializer.save()
+            return JsonResponse(event_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(event_serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 def test_list(request):

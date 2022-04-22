@@ -2,44 +2,44 @@ import { Component } from '@angular/core';
 import { AnyForUntypedForms, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { PlayerService } from '../services/player.service';
+import { EventService } from '../services/event.service';
 @Component({
   templateUrl: 'eventEntry.component.html',
 })
 
 export class EventEntry {
-  playerId = new FormControl('', [Validators.required]);
-  title = new FormControl('', [Validators.maxLength(2)]);
+  eventId = new FormControl('', [Validators.required, Validators.maxLength(11)]);
+  name = new FormControl('', [Validators.required, Validators.maxLength(45)]);
 
-  getErrorMessageTitle() {
-    if (this.title.hasError('required')) {
+  getErrorMessageEventid() {
+    if (this.name.hasError('required')) {
       return 'You must enter a value';
     }
-    if (this.title.hasError('maxlength')) {
-      return 'Title can\'t be longer than 2 characters';
+    if (this.name.hasError('maxlength')) {
+      return 'Event ID can\'t be longer than 11 characters';
     }
     return '';
   }
 
-  getErrorMessagePlayerid() {
-    if (this.playerId.hasError('required')) {
+  getErrorMessageName() {
+    if (this.name.hasError('required')) {
       return 'You must enter a value';
     }
     return '';
   }
 
-  private player: any;
-  constructor(private service: PlayerService, private snackBar: MatSnackBar) {
-    this.player = {};
+  private event: any;
+  constructor(private service: EventService, private snackBar: MatSnackBar) {
+    this.event = {};
   }
 
-  addPlayer() {
-    console.log(this.playerId.value);
-    console.log(this.title.value);
-    this.player = { "player_id": this.playerId.value, "title": this.title.value };
-    this.service.addPlayer(this.player).subscribe(response => {
+  addEvent() {
+    console.log(this.eventId.value);
+    console.log(this.name.value);
+    this.event = { "event_id": this.eventId.value, "name": this.name.value };
+    this.service.addEvent(this.event).subscribe(response => {
       console.log(response);
-      if (Object.keys(response).length === Object.keys(this.player).length) {
+      if (Object.keys(response).length === Object.keys(this.event).length) {
         this.snackBar.openFromComponent(successSnackBarComponent, {
           duration: 2000,
         });
