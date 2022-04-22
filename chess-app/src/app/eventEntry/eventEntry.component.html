@@ -3,36 +3,36 @@
     <h1>Event Entry</h1>
   </div>
   <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
-    <mat-label>Enter player id</mat-label>
+    <mat-label>Enter event id</mat-label>
     <input
       matInput
-      placeholder="chessStats348"
-      [formControl]="playerId"
-      maxlength="15"
+      placeholder="1234"
+      [formControl]="eventId"
+      maxlength="11"
       required
     />
-    <mat-error *ngIf="playerId.invalid">{{
-      getErrorMessagePlayerid()
+    <mat-error *ngIf="eventId.invalid">{{
+      getErrorMessageEventid()
     }}</mat-error>
   </mat-form-field>
   <mat-form-field style="margin-top: 1%; margin-left: 5px" appearance="fill">
-    <mat-label>Enter player title</mat-label>
+    <mat-label>Enter event name</mat-label>
     <input
       matInput
       placeholder="GM"
-      [formControl]="title"
-      minlength="0"
-      maxlength="2"
+      [formControl]="name"
+      maxlength="45"
+      required
     />
-    <mat-error *ngIf="title.invalid">{{ getErrorMessageTitle() }}</mat-error>
+    <mat-error *ngIf="name.invalid">{{ getErrorMessageName() }}</mat-error>
   </mat-form-field>
   <div class="button">
     <button
       style="margin-top: 1%"
       mat-raised-button
       color="primary"
-      [disabled]="playerId.invalid || title.invalid"
-      (click)="addPlayer()"
+      [disabled]="eventId.invalid || name.invalid"
+      (click)="addEvent()"
     >
       Submit
     </button>
