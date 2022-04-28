@@ -1,3 +1,5 @@
+from multiprocessing import managers
+from pstats import Stats
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http.response import JsonResponse
@@ -7,15 +9,18 @@ from rest_framework import status
 
 from chessStats.models import Player
 from chessStats.serializers import PlayerSerializer
-
 from chessStats.models import Opening
 from chessStats.serializers import OpeningSerializer
-
 from chessStats.models import Event
 from chessStats.serializers import EventSerializer
+from chessStats.models import Date
+from chessStats.serializers import DateSerializer
+from chessStats.models import Match
+from chessStats.serializers import MatchSerializer
 
 from chessStats.models import Test
 from chessStats.serializers import TestSerializer
+
 
 # Create your views here.
 
@@ -74,6 +79,35 @@ def event_list(request):
             event_serializer.save()
             return JsonResponse(event_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(event_serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt
+def date_list(request):
+    if request.method == 'GET':
+        dates = Date.objects.all()
+        date_serializer = DateSerializer(dates, many=True)
+        return JsonResponse(date_serializer.data, safe=False)
+    elif request.method == 'POST':
+        date_data = JSONParser().parse(request)
+        date_serializer = DateSerializer(data=date_data)
+        if date_serializer.is_valid():
+            date_serializer.save()
+            return JsonResponse(date_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(date_serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt
+def match_list(request):
+    print("inside of match_list trying to get or post")
+    print(request.body)
+    if request.method == 'POST':
+        print("trying to post a match")
+        try:
+            player = Player.objects.get()
+        except Exception as e:
+            print(e)
+    
+    return JsonResponse({"hh": "player"})
+
+
 
 @csrf_exempt
 def test_list(request):
