@@ -30,6 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
+import { ChartsModule } from 'ng2-charts';
+
 
 const mat = [
   MatButtonModule,
@@ -65,6 +67,7 @@ const mat = [
     BrowserAnimationsModule,
     appRoutingModule,
     HttpClientModule,
+    ChartsModule,
     ...mat,
   ],
   exports: [

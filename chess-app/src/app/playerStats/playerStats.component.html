@@ -1,31 +1,47 @@
 <div style="text-align: center" class="container">
   <div style="margin-top: 1%">
-    <h1>Player Stats Page</h1>
+    <h1>Player Stats</h1>
   </div>
   <div id="myData"></div>
-  <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
-    <mat-label>White</mat-label>
-    <input
-      matInput
-      placeholder="chessStats348"
-      [formControl]="playerId"
-      maxlength="45"
-      required
-    />
-    <mat-error *ngIf="playerId.invalid">{{
-      getErrorMessagePlayerid()
-    }}</mat-error>
-  </mat-form-field>
-  <div class="button">
-    <button
-      style="margin-top: 1%"
-      mat-raised-button
-      color="primary"
-      [disabled]="playerId.invalid"
-      (click)="test(playerId)"
-    >
-      Submit
-    </button>
+  <div class="container" style="display: flex; align-items: center; justify-content: center; margin: 5px; border: 1px solid red;">
+    <mat-form-field style="margin-top: 20px;" appearance="fill">
+      <mat-label>Search a player...</mat-label>
+      <input
+        matInput
+        placeholder="chessStats348"
+        [formControl]="playerId"
+        maxlength="45"
+        required
+      />
+      <mat-error *ngIf="playerId.invalid">{{
+        getErrorMessagePlayerid()
+      }}</mat-error>
+    </mat-form-field>
+    <div class="button" style="margin-left: 10px; vertical-align: middle;">
+      <button
+        style="margin-top: 1%"
+        mat-raised-button
+        color="primary"
+        [disabled]="playerId.invalid"
+        (click)="test(playerId)"
+      >
+        Submit
+      </button>
+    </div>
   </div>
-  <div style="white-space: pre">{{ player }}</div>
+  <div class="container" style="display: flex; margin: 5px; border: 1px solid blue;">
+    <div style="margin: 1px; border: 1px solid green;">
+      <canvas baseChart
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType">
+      </canvas>
+    </div>
+    <div class="container" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; border: 1px solid red;">
+      <div style="border: 1px solid yellow; margin: 1px;">Player ID:<br>{{ player_id }}</div>
+      <div style="border: 1px solid green; margin: 1px;">Title:<br>{{ player_title }}</div>
+      <div style="border: 1px solid blue; margin: 1px;">Elo:<br>{{ player_elo }}</div>
+      <div style="border: 1px solid purple; margin: 1px;">Top Day of the Week:<br>Tuesday</div>
+    </div>
+  </div>
 </div>
