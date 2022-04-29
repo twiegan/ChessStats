@@ -25,6 +25,8 @@ export class PlayerStats {
   public player_id: any;
   public player_title: any;
   public player_elo: any;
+  public player_games_played: any;
+  public player_games_won: any;
   doughnutChartLabels: Label[] = ['Win', 'Loss'];
   doughnutChartData: MultiDataSet = [
     [67, 33]
@@ -38,6 +40,9 @@ export class PlayerStats {
         this.player_id = response.player_id;
         this.player_title = response.title;
         this.player_elo = response.elo;
+        this.player_games_played = response.games_played;
+        this.player_games_won = response.games_won;
+        console.log(response);
         return this.player;
     }) 
   }
