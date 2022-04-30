@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('chessStats', '0002_test_remove_player_id_alter_player_player_id'),
     ]
-
+"""
     operations = [
         migrations.RemoveField(
             model_name='test',
@@ -18,9 +18,4 @@ class Migration(migrations.Migration):
             model_name='test',
             name='shravan',
         ),
-        migrations.AddField(
-            model_name='test',
-            name='Shravan',
-            field=models.IntegerField(default=0, primary_key=True, serialize=False),
-        ),
-    ]
+    ]"""

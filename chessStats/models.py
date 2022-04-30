@@ -4,8 +4,24 @@ from datetime import date
 from nis import match
 from re import M
 from django.db import models
+from django_prepared_query import PreparedManager
 
 # Create your models here.
+
+
+class User(models.Model):
+    user_id = models.CharField(
+        max_length=16,
+        blank=False,
+        unique=True,
+        primary_key=True)
+    salt = models.CharField(
+        max_length=64,
+        blank=False
+    )
+    passwordHash = models.CharField(
+        max_length=64,
+        blank=False)
 
 
 class Player(models.Model):
@@ -25,14 +41,12 @@ class Player(models.Model):
         blank=False,
         default=''
     )
-    games_played = models.IntegerField(
-        max_length=5,
-        blank=False,
+    games_won = models.IntegerField(
+        max_length=11,
         default=0
     )
-    games_won = models.IntegerField(
-        max_length=5,
-        blank=False,
+    games_played = models.IntegerField(
+        max_length=11,
         default=0
     )
 
@@ -40,13 +54,12 @@ class Player(models.Model):
 class Opening(models.Model):
     opening_id = models.IntegerField(
         max_length=11,
-        blank=False,
-        primary_key=True,
         default=0
     )
     name = models.CharField(
         max_length=45,
         blank=False,
+        primary_key=True,
         default=''
     )
 
@@ -54,7 +67,6 @@ class Opening(models.Model):
 class Event(models.Model):
     event_id = models.IntegerField(
         max_length=11,
-        blank=False,
         default=0
     )
     name = models.CharField(
@@ -69,29 +81,26 @@ class Date(models.Model):
     date_utc = models.CharField(
         max_length=45,
         blank=False,
-        primary_key=True
     )
     time_utc = models.CharField(
         max_length=45,
         blank=False,
-        primary_key=True
     )
     weekday = models.CharField(
         max_length=45,
         blank=False,
-        primary_key=True
     )
     date_id = models.IntegerField(
         max_length=11,
-        blank=True
+        primary_key=True,
     )
 
 
 class Match(models.Model):
     match_id = models.IntegerField(
         max_length=11,
-        blank=False,
-        primary_key=True
+        primary_key=True,
+        default=0
     )
     date_id = models.IntegerField(
         max_length=11,

@@ -12,7 +12,7 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
-        fields = ('player_id', 'title', 'elo', 'games_played', 'games_won')
+        fields = ('player_id', 'title', 'elo', 'games_won', 'games_played')
 
 
 class OpeningSerializer(serializers.ModelSerializer):
@@ -31,6 +31,7 @@ class DateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Date
         fields = ('date_utc', 'time_utc', 'weekday', 'date_id')
+        unique_together = ('date_utc', 'time_utc', 'weekday')
 
 
 class MatchSerializer(serializers.ModelSerializer):
