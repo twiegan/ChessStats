@@ -12,7 +12,7 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
-        fields = ('player_id', 'title', 'elo')
+        fields = ('player_id', 'title', 'elo', 'games_won', 'games_played')
 
 class OpeningSerializer(serializers.ModelSerializer):
     class Meta:
