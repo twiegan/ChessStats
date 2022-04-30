@@ -22,6 +22,7 @@ export class MatchEntry {
   turns = new FormControl('', [Validators.required]);
   termination = new FormControl('', [Validators.required]);
   timeControl = new FormControl('', [Validators.required]);
+  winner = new FormControl('', [Validators.required]);
   opening = new FormControl('', [Validators.required]);
   event = new FormControl('', [Validators.required]);
 
@@ -43,12 +44,9 @@ export class MatchEntry {
     return '';
   }
 
-  getErrorMessageTitle() {
+  getErrorMessage() {
     if (this.title.hasError('required')) {
       return 'You must enter a value';
-    }
-    if (this.title.hasError('maxlength')) {
-      return 'Title can\'t be longer than 2 characters';
     }
     return '';
   }
@@ -65,14 +63,14 @@ export class MatchEntry {
   private time_utc: string;
   private weekday: string;
   private match: any;
-  winner: string;
+  // winner: string;
 
   constructor(private service: MatchService, private snackBar: MatSnackBar) {
     this.dateTime = {};
     this.date_utc = '';
     this.time_utc = '';
     this.weekday = '';
-    this.winner = '';
+    //this.winner = '';
     this.match = {};
   }
 
@@ -102,10 +100,10 @@ export class MatchEntry {
     console.log(this.event.value);
 
 
-    this.match = { "white": this.white.value, "black": this.black.value, "turns": this.turns.value, "termination": this.termination.value, "time_control": this.timeControl.value, "winner": this.winner, "event": this.event.value, "opening": this.opening.value };
+    this.match = { "date": this.dateTime, "white_id": this.white.value, "black_id": this.black.value, "turns": this.turns.value, "termination": this.termination.value, "time_control": this.timeControl.value, "winner": this.winner, "event": this.event.value, "opening": this.opening.value };
     this.service.addMatch(this.match).subscribe(response => {
       console.log(response);
-      if (Object.keys(response).length === Object.keys(this.match).length) {
+      if (Object.keys(response).length === 10) {
         this.snackBar.openFromComponent(successSnackBarComponent, {
           duration: 2000,
         });
