@@ -4,6 +4,7 @@ venv/
 chessStatsRestApi/.env
 chessStatsRestApi/__pycache__
 chessStats/__pycache__
+chessStatsRestApi/__init__.pyc
 
 # Frontend ignores
 
