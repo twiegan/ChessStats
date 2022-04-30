@@ -3,7 +3,7 @@
     <h1>Player Stats</h1>
   </div>
   <div id="myData"></div>
-  <div class="container" style="display: flex; align-items: center; justify-content: center; margin: 5px; border: 1px solid red;">
+  <div class="container" style="display: flex; align-items: center; justify-content: center; margin: 5px;">
     <mat-form-field style="margin-top: 20px;" appearance="fill">
       <mat-label>Search a player...</mat-label>
       <input
@@ -29,21 +29,13 @@
       </button>
     </div>
   </div>
-  <div class="container" style="display: flex; margin: 5px; border: 1px solid blue;">
-    <div style="margin: 1px; border: 1px solid green;">
-      <canvas baseChart
-        [data]="doughnutChartData"
-        [labels]="doughnutChartLabels"
-        [chartType]="doughnutChartType">
-      </canvas>
-    </div>
-    <div class="container" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; border: 1px solid red;">
-      <div style="border: 1px solid yellow; margin: 1px;">Player ID:<br>{{ player_id }}</div>
-      <div style="border: 1px solid green; margin: 1px;">Title:<br>{{ player_title }}</div>
-      <div style="border: 1px solid blue; margin: 1px;">Elo:<br>{{ player_elo }}</div>
-      <div style="border: 1px solid purple; margin: 1px;">Top Day of the Week:<br>Tuesday</div>
+  <div class="container" style="display: flex; margin: 5px;">
+    <div class="container" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr;">
+      <div style="margin: 3px; font-size: 28px;">Player ID:<br><br>{{ player_id || 'N/A'  }}<br></div>
+      <div style="margin: 3px; font-size: 28px;">Title:<br><br>{{ player_title || 'N/A'  }}<br></div>
+      <div style="margin: 3px; font-size: 28px;">Elo:<br><br>{{ player_elo || 'N/A'  }}<br></div>
+      <div style="margin: 10px; font-size: 28px;">Games Played: {{ player_games_played || 'N/A'  }}<br></div>
+      <div style="margin: 10px; font-size: 28px;">Win-Loss-Ratio: {{ player_win_loss || 'N/A' }}<br></div>
     </div>
   </div>
-  <div style="border: 1px solid purple; margin: 1px;">Games Played:<br>{{ player_games_played }}</div>
-  <div style="border: 1px solid purple; margin: 1px;">Games Won:<br>{{ player_games_won }}</div>
 </div>
