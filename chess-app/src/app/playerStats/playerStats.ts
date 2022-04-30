@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { PlayerService } from '../services/player.service';
 
-import { ChartType } from 'chart.js';
+import { ChartType, Chart } from 'chart.js';
 import { Label, MultiDataSet } from 'ng2-charts';
 
 @Component({
@@ -27,11 +27,8 @@ export class PlayerStats {
   public player_elo: any;
   public player_games_played: any;
   public player_games_won: any;
-  doughnutChartLabels: Label[] = ['Win', 'Loss'];
-  doughnutChartData: MultiDataSet = [
-    [67, 33]
-  ];
-  doughnutChartType: ChartType = 'doughnut';
+  public player_win_loss: any;
+
   constructor(private service: PlayerService, private snackBar: MatSnackBar) {}
 
   test(playerId: any) {
@@ -42,7 +39,7 @@ export class PlayerStats {
         this.player_elo = response.elo;
         this.player_games_played = response.games_played;
         this.player_games_won = response.games_won;
-        console.log(response);
+        this.player_win_loss = (this.player_games_won) / (this.player_games_played - this.player_games_won);
         return this.player;
     }) 
   }
