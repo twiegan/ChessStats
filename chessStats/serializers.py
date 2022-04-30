@@ -29,6 +29,7 @@ class DateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Date
         fields = ('date_utc', 'time_utc', 'weekday', 'date_id')
+        unique_together = ('date_utc', 'time_utc', 'weekday')
 
 
 class MatchSerializer(serializers.ModelSerializer):
