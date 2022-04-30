@@ -8,7 +8,7 @@ import { Player } from './player'
   providedIn: 'root'
 })
 export class PlayersService {
-  url = "https://infinite-river-70119.herokuapp.com/players/"
+  url = "http://127.0.0.1:8000/players/"//"https://infinite-river-70119.herokuapp.com/players/"
   constructor(private http: HttpClient) { }
 
   public getPlayers(): Observable<Player[]> {
