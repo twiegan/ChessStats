@@ -7,15 +7,22 @@ import { Player } from './player'
 @Injectable({
   providedIn: 'root'
 })
-export class PlayersService {
-  url = "http://127.0.0.1:8000/players/"//"https://infinite-river-70119.herokuapp.com/players/"
+export class PlayerService {
+  url = "https://infinite-river-70119.herokuapp.com/players/"
+  ret: any
   constructor(private http: HttpClient) { }
 
   public getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(this.url);
   }
 
+  public getPlayer(playerId: any): Observable<Player> {
+    return this.http.get<Player>(this.url + playerId)
+  }
+
   public addPlayer(data: any) {
     return this.http.post(this.url, data);
+    // console.log(this.ret);
+    // return this.ret;
   }
 }

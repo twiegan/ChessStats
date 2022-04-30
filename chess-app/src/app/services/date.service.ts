@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { User } from './user';
+import { Date } from './date'
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  url = "https://infinite-river-70119.herokuapp.com/players/"
+export class DateService {
+  //TODO: change url to heroku later
+  url = "http://0.0.0.0:5000/dates/"
   constructor(private http: HttpClient) { }
 
-  public loginUser(data: any) {
+  public getDates(): Observable<Date[]> {
+    return this.http.get<Date[]>(this.url);
+  }
+
+  public addDate(data: any) {
     return this.http.post(this.url, data);
   }
 }
