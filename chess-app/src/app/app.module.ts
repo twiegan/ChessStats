@@ -7,8 +7,8 @@ import { HomeComponent } from './home';
 import { PlayerEntry } from './playerEntry';
 import { MatchEntry } from './matchEntry';
 import { FollowedComponent } from './followed';
-import { LoginComponent } from './login';
 import { SearchComponent } from './search';
+import { AuthModule } from './auth/auth.module';
 import { OpeningEntry } from './openingEntry';
 import { EventEntry } from './eventEntry';
 import { PlayerStats } from './playerStats';
@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
@@ -56,7 +57,6 @@ const mat = [
     PlayerEntry,
     MatchEntry,
     FollowedComponent,
-    LoginComponent,
     SearchComponent,
     OpeningEntry,
     EventEntry,
@@ -67,6 +67,8 @@ const mat = [
     BrowserAnimationsModule,
     appRoutingModule,
     HttpClientModule,
+    AuthModule,
+    RouterModule,
     ChartsModule,
     ...mat,
   ],
