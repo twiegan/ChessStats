@@ -12,7 +12,8 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Player
-        fields = ('player_id', 'title', 'elo')
+        fields = ('player_id', 'title', 'elo', 'games_played', 'games_won')
+
 
 class OpeningSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,6 +26,7 @@ class EventSerializer(serializers.ModelSerializer):
         model = Event
         fields = ('event_id', 'name')
 
+
 class DateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Date
@@ -34,7 +36,10 @@ class DateSerializer(serializers.ModelSerializer):
 class MatchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Match
-        fields = ('date_id', 'turns', 'termination', 'winner', 'black_id', 'white_id', 'opening_id', 'event_id', 'time_control', 'match_id')
+        fields = ('date_id', 'turns', 'termination', 'winner', 'black_id',
+                  'white_id', 'opening_id', 'event_id', 'time_control', 'match_id')
+
+
 class TestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
