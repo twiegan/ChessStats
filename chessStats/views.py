@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework import status
+
+import os
+import hashlib
 
 from chessStats.models import Player
 from chessStats.serializers import PlayerSerializer
@@ -11,8 +14,30 @@ from chessStats.serializers import PlayerSerializer
 from chessStats.models import Test
 from chessStats.serializers import TestSerializer
 
+from chessStats.models import User
+
 # Create your views here.
 
+@csrf_exempt
+def user_login(request):
+    if request.method != 'POST':
+        return HttpResponseBadRequest
+    user_request = JSONParser().parse(request)
+    print('User: ' + user_request['user_id'] + '\nPass: ' + user_request['password'])
+    userSearch = User.objects.filter(user_id=user_request['user_id'])
+    if not userSearch.exists():
+        return JsonResponse({'Auth': 'False'})
+    account = userSearch[0]
+    passHash = hashlib.pbkdf2_hmac('sha256', user_request['password'].encode(), bytearray.fromhex(account.salt), 10000)
+    if passHash.hex() == account.passwordHash:
+        return JsonResponse({'Auth': 'True', 'User': account.user_id})
+    return JsonResponse({'Auth': 'False'})
+    """
+    temp = userSearch[0]
+    temp.salt = tempsalt.hex()
+    temp.passwordHash = digest.hex()
+    temp.save()
+    """
 
 @csrf_exempt
 def player_list(request):
