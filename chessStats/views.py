@@ -39,16 +39,17 @@ def player_list(request):
             return JsonResponse(player_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(player_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @csrf_exempt
 def player_detail(request, player_id):
     if request.method == 'GET':
-        print("Trying to call player_detail function")
         try:
-            player = Player.objects.get(pk = player_id)
+            player = Player.objects.get(pk=player_id)
             player_serializer = PlayerSerializer(player)
             return JsonResponse(player_serializer.data)
         except Player.DoesNotExist:
             return JsonResponse({'message': 'The player does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
 
 @csrf_exempt
 def opening_list(request):
@@ -65,6 +66,7 @@ def opening_list(request):
             return JsonResponse(opening_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(opening_serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
+
 @csrf_exempt
 def event_list(request):
     print("trying to call event_list")
@@ -80,6 +82,7 @@ def event_list(request):
             return JsonResponse(event_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(event_serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
+
 @csrf_exempt
 def date_list(request):
     if request.method == 'GET':
@@ -94,6 +97,7 @@ def date_list(request):
             return JsonResponse(date_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(date_serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
+
 @csrf_exempt
 def match_list(request):
     print("inside of match_list trying to get or post")
@@ -104,9 +108,8 @@ def match_list(request):
             player = Player.objects.get()
         except Exception as e:
             print(e)
-    
-    return JsonResponse({"hh": "player"})
 
+    return JsonResponse({"hh": "player"})
 
 
 @csrf_exempt
@@ -115,5 +118,3 @@ def test_list(request):
         shravan = Test.objects.all()
         shravan_serializer = TestSerializer(shravan, many=True)
         return JsonResponse(shravan_serializer.data, safe=False)
-
-

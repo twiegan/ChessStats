@@ -25,6 +25,17 @@ class Player(models.Model):
         blank=False,
         default=''
     )
+    games_played = models.IntegerField(
+        max_length=5,
+        blank=False,
+        default=0
+    )
+    games_won = models.IntegerField(
+        max_length=5,
+        blank=False,
+        default=0
+    )
+
 
 class Opening(models.Model):
     opening_id = models.IntegerField(
@@ -39,6 +50,7 @@ class Opening(models.Model):
         default=''
     )
 
+
 class Event(models.Model):
     event_id = models.IntegerField(
         max_length=11,
@@ -51,6 +63,7 @@ class Event(models.Model):
         primary_key=True,
         default=''
     )
+
 
 class Date(models.Model):
     date_utc = models.CharField(
@@ -122,7 +135,6 @@ class Match(models.Model):
         blank=False,
         default=''
     )
-
 
 
 class Test(models.Model):
