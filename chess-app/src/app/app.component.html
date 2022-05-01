@@ -25,11 +25,11 @@
     </button>
     <button
       mat-flat-button
-      [routerLink]="['login']" routerLinkActive="active"
       color="primary"
       style="margin-left: auto; margin-right: 0"
+      (click)="login_logout()"
     >
-      Login
+      {{getVal()}}
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
