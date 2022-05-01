@@ -22,6 +22,7 @@
     "@angular/platform-browser": "^13.2.7",
     "@angular/platform-browser-dynamic": "^13.2.7",
     "@angular/router": "^13.2.7",
+    "angular-material-expansion-panel": "^0.7.2",
     "chart.js": "^2.9.4",
     "moment": "^2.29.3",
     "ng2-charts": "^2.4.2",

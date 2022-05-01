@@ -35,7 +35,19 @@ export class LoginComponent {
   loginUser() {
     this.user = { "user_id": this.userId.value, "password": this.password.value };
     this.service.loginUser(this.user).subscribe(response => {
-      console.log(response);
+      let JResponse = JSON.parse(JSON.stringify(response))
+      console.log(JResponse);
+      if (JResponse.Auth.localeCompare("True") == 0) {
+        localStorage.setItem("user_id", JResponse.User);
+        this.snackBar.openFromComponent(successSnackBarComponent, {
+          duration: 2000,
+        });
+      }
+      else {
+        this.snackBar.openFromComponent(failSnackBarComponent, {
+          duration: 2000,
+        });
+      }
     }, error => {
       this.snackBar.openFromComponent(failSnackBarComponent, {
         duration: 2000,
@@ -56,3 +68,16 @@ export class LoginComponent {
   ],
 })
 export class failSnackBarComponent { }
+
+@Component({
+  selector: 'success-component',
+  templateUrl: 'successIndicator.component.html',
+  styles: [
+    `
+    .snackBar {
+      color: White;
+    }
+  `,
+  ],
+})
+export class successSnackBarComponent { }

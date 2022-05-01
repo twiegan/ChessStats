@@ -28,12 +28,13 @@ export class PlayerStats {
   public player_games_played: any;
   public player_games_won: any;
   public player_win_loss: any;
+  public player_matches: any;
 
   constructor(private service: PlayerService, private snackBar: MatSnackBar) {}
 
-  test(playerId: any) {
+  clickEvent(playerId: any) {
     this.service.getPlayer(playerId.value).subscribe(response => {
-        this.player = JSON.stringify(response, null, 4).replace(/\\n/g, "newline");
+        this.player = response;
         this.player_id = response.player_id;
         this.player_title = response.title;
         this.player_elo = response.elo;
@@ -42,6 +43,11 @@ export class PlayerStats {
         this.player_win_loss = (this.player_games_won) / (this.player_games_played - this.player_games_won);
         return this.player;
     }) 
+
+    this.service.getMatches(playerId.value).subscribe(response => {
+      this.player_matches = response;
+      return this.player_matches;
+  }) 
   }
 }
 
