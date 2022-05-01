@@ -4,18 +4,26 @@
     <button mat-flat-button routerLink="/" color="primary" >
       ♟️ Chess Stats
     </button>
-    <button mat-flat-button routerLink="/playerEntry" color="primary" *ngIf="localStorage.getItem == null">
-      Player Entry
-    </button>
+    <div *ngIf="!isHidden">
+      <button mat-flat-button routerLink="/playerEntry" color="primary">
+        Player Entry
+      </button>
+    </div>
+    <div *ngIf="!isHidden">
     <button mat-flat-button routerLink="/openingEntry" color="primary">
       Opening Entry
     </button>
+    </div>
+    <div *ngIf="!isHidden">
     <button mat-flat-button routerLink="/eventEntry" color="primary">
       Event Entry
     </button>
+    </div>
+    <div *ngIf="!isHidden">
     <button mat-flat-button routerLink="/matchEntry" color="primary">
       Match Entry
     </button>
+    </div>
     <button mat-flat-button routerLink="/followed" color="primary">
       Followed
     </button>
