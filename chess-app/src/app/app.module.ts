@@ -22,6 +22,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 const mat = [
   MatButtonModule,
@@ -33,6 +37,9 @@ const mat = [
   MatSnackBarModule,
   MatToolbarModule,
   ReactiveFormsModule,
+  MatExpansionModule,
+  MatDividerModule,
+  MatListModule,
 ];
 
 @NgModule({
