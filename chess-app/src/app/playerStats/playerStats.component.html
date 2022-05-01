@@ -43,7 +43,7 @@
         <mat-expansion-panel *ngFor="let match of player_matches" >
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{ match.label }}
+              {{ match.match_id }}
             </mat-panel-title>
             <mat-panel-description>
               Toggle for Match Info...
@@ -51,6 +51,7 @@
           </mat-expansion-panel-header>
 
           <div style="font-size: 15px;">
+            Event: {{ match.event_name }}<br>
             White: {{ match.white_id }}<br>
             Black: {{ match.black_id }}<br>
             Game: {{ match.turns }}<br>
