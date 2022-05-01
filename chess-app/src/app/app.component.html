@@ -1,10 +1,10 @@
 <!-- nav -->
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-flat-button routerLink="/" color="primary">
+    <button mat-flat-button routerLink="/" color="primary" >
       ♟️ Chess Stats
     </button>
-    <button mat-flat-button routerLink="/playerEntry" color="primary">
+    <button mat-flat-button routerLink="/playerEntry" color="primary" *ngIf="localStorage.getItem == null">
       Player Entry
     </button>
     <button mat-flat-button routerLink="/openingEntry" color="primary">
