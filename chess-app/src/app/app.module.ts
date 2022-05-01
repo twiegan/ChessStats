@@ -7,7 +7,6 @@ import { HomeComponent } from './home';
 import { PlayerEntry } from './playerEntry';
 import { MatchEntry } from './matchEntry';
 import { FollowedComponent } from './followed';
-import { SearchComponent } from './search';
 import { AuthModule } from './auth/auth.module';
 import { OpeningEntry } from './openingEntry';
 import { EventEntry } from './eventEntry';
@@ -61,7 +60,6 @@ const mat = [
     PlayerEntry,
     MatchEntry,
     FollowedComponent,
-    SearchComponent,
     OpeningEntry,
     EventEntry,
     PlayerStats,
