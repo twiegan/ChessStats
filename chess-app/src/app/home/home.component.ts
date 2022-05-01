@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
-import { PlayersService } from '../services/players.service';
+import { PlayerService } from '../services/player.service';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent {
 
   private players: any;
   public strPlayers: any;
-  constructor(private service: PlayersService) {
+  constructor(private service: PlayerService) {
     this.service.getPlayers().subscribe(response => {
       this.players = response;
       this.strPlayers = JSON.stringify(response, null, 4).replace(/\\n/g, "newline");

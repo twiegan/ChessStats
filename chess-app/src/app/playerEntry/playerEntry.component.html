@@ -8,7 +8,7 @@
       matInput
       placeholder="chessStats348"
       [formControl]="playerId"
-      maxlength="15"
+      maxlength="45"
       required
     />
     <mat-error *ngIf="playerId.invalid">{{
@@ -22,16 +22,27 @@
       placeholder="GM"
       [formControl]="title"
       minlength="0"
-      maxlength="2"
+      maxlength="3"
     />
     <mat-error *ngIf="title.invalid">{{ getErrorMessageTitle() }}</mat-error>
+  </mat-form-field>
+  <mat-form-field style="margin-top: 1%; margin-left: 5px" appearance="fill">
+    <mat-label>Enter player Elo</mat-label>
+    <input
+      matInput
+      placeholder="1234"
+      [formControl]="elo"
+      maxlength="4"
+      required
+    />
+    <mat-error *ngIf="elo.invalid">{{ getErrorMessageElo() }}</mat-error>
   </mat-form-field>
   <div class="button">
     <button
       style="margin-top: 1%"
       mat-raised-button
       color="primary"
-      [disabled]="playerId.invalid || title.invalid"
+      [disabled]="playerId.invalid || title.invalid || elo.invalid"
       (click)="addPlayer()"
     >
       Submit
