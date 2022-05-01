@@ -7,13 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent{
-  constructor(private router: Router) {}
+  isHidden: boolean = false
+
+  constructor(private router: Router) {
+  }
 
   getVal() {
     if (localStorage.getItem("user_id") == null) {
+      this.isHidden = true;
       return "Login";
     }
     else {
+      this.isHidden = false;
       return "Logout";
     }
   }
@@ -24,6 +29,8 @@ export class AppComponent{
     else {
       this.router.navigate(['login']);
     }
+
+
   }
   title = 'chess-app';
 }
