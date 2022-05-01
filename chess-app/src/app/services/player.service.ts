@@ -10,7 +10,7 @@ import { MatchWithName } from './matchWithName';
 })
 export class PlayerService {
   url = "https://infinite-river-70119.herokuapp.com/players/"
-  matchUrl = "http://localhost:5000/search/player/"
+  matchUrl = "http://infinite-river-70119.herokuapp.com/search/player/"
   ret: any
   constructor(private http: HttpClient) { }
 
