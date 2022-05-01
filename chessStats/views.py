@@ -31,6 +31,7 @@ from chessStats.models import User
 
 # Create your views here.
 
+
 @csrf_exempt
 def user_register(request):
     if request.method != 'POST':
@@ -51,14 +52,18 @@ def user_login(request):
     if request.method != 'POST':
         return HttpResponseBadRequest
     user_request = JSONParser().parse(request)
+    print('User: ' + user_request['user_id'] +
+          '\nPass: ' + user_request['password'])
     userSearch = User.objects.filter(user_id=user_request['user_id'])
     if not userSearch.exists():
         return JsonResponse({'Auth': 'False'})
     account = userSearch[0]
-    passHash = hashlib.pbkdf2_hmac('sha256', user_request['password'].encode(), bytearray.fromhex(account.salt), 10000)
+    passHash = hashlib.pbkdf2_hmac('sha256', user_request['password'].encode(
+    ), bytearray.fromhex(account.salt), 10000)
     if passHash.hex() == account.passwordHash:
         return JsonResponse({'Auth': 'True', 'User': account.user_id})
     return JsonResponse({'Auth': 'False'})
+
 
 @csrf_exempt
 def player_list(request):
@@ -78,7 +83,6 @@ def player_list(request):
 @csrf_exempt
 def player_detail(request, player_id):
     if request.method == 'GET':
-        print("Trying to call player_detail function")
         try:
             player = Player.objects.get(pk=player_id)
             player_serializer = PlayerSerializer(player)
@@ -178,14 +182,15 @@ def match_list(request):
                 print(opening_serializer.errors, flush=True)
                 return JsonResponse(opening_serializer.data, status=status.HTTP_400_BAD_REQUEST)
         try:
-            date = Date.objects.get(date_utc= matchToPost['date']['date_utc'], time_utc=
-                                    matchToPost['date']['time_utc'], weekday= matchToPost['date']['weekday'])
+            date = Date.objects.get(
+                date_utc=matchToPost['date']['date_utc'], time_utc=matchToPost['date']['time_utc'], weekday=matchToPost['date']['weekday'])
         except Date.DoesNotExist:
             date_serializer = DateSerializer(
                 data={'date_utc': matchToPost['date']['date_utc'], 'time_utc': matchToPost['date']['time_utc'], 'weekday': matchToPost['date']['weekday'], 'date_id': Date.objects.aggregate(Max('date_id'))['date_id__max'] + 10})
             if date_serializer.is_valid():
                 date = date_serializer.save()
-                print("saving newly created date id: ", date.date_id, flush=True)
+                print("saving newly created date id: ",
+                      date.date_id, flush=True)
             else:
                 print(date_serializer.errors, flush=True)
                 return JsonResponse(date_serializer.data, status=status.HTTP_400_BAD_REQUEST)
@@ -198,7 +203,7 @@ def match_list(request):
             black_player.games_won += 1
         elif white_player.player_id == matchToPost['winner']:
             white_player.games_won += 1
-        
+
         black_player.games_played += 1
         white_player.games_played += 1
         black_player.save()
@@ -207,7 +212,7 @@ def match_list(request):
         match_serializer = MatchSerializer(data=match)
         if match_serializer.is_valid():
             match = match_serializer.save()
-        else: 
+        else:
             print(match_serializer.errors, flush=True)
             return JsonResponse(match_serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
