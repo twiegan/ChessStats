@@ -9,18 +9,23 @@ export class FollowedComponent {
     //public user_id: any
     
     public dataSource: any;
-    public user_id = 'admin';
+    public user_id = localStorage.getItem('user_id');
+
    
     constructor(private service: FollowedPlayersService){
-      this.service.getFollows(this.user_id).subscribe(response => {
-        console.log(response);
-        // response.forEach(element => {
-        //   this.dataDict[Object.keys(element)[0]] = Object.values(element)[0];
-        // });
-        // console.log(this.dataDict);
-
-        this.dataSource = response;
-      })
+      if (this.user_id != null) {
+        this.service.getFollows(this.user_id).subscribe(response => {
+          console.log(response);
+          // response.forEach(element => {
+          //   this.dataDict[Object.keys(element)[0]] = Object.values(element)[0];
+          // });
+          // console.log(this.dataDict);
+  
+          this.dataSource = response;
+        })
+      } else {
+        this.dataSource = null;
+      }
 
       
     };
