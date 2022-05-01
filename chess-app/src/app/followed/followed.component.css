@@ -2,6 +2,7 @@
 .example-headers-align .mat-expansion-panel-header-description, .mat-divider {
   flex-basis: 0;
   color:aliceblue;
+  font-size: large;
 }
 
 .mat-expansion-panel {
