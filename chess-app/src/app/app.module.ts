@@ -27,6 +27,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import {MatTableModule} from '@angular/material/table';
+
 
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
@@ -47,7 +49,8 @@ const mat = [
   ReactiveFormsModule,
   NgxMatMomentModule,
   NgxMatDatetimePickerModule,
-  NgxMatTimepickerModule
+  NgxMatTimepickerModule,
+  MatTableModule
 ];
 
 @NgModule({
