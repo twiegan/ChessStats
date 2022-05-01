@@ -33,6 +33,21 @@ from chessStats.models import User
 
 
 @csrf_exempt
+def user_register(request):
+    if request.method != 'POST':
+        return HttpResponseBadRequest
+    user_request = JSONParser().parse(request)
+    print('User: ' + user_request['user_id'] + '\nPass: ' + user_request['password'])
+    userCheck = User.objects.filter(user_id=user_request['user_id'])
+    if userCheck.exists():
+        return JsonResponse({'Success': 'False'})
+    newSalt = os.urandom(32)
+    passHash = hashlib.pbkdf2_hmac('sha256', user_request['password'].encode(), newSalt, 10000)
+    newUser = User(user_id=user_request['user_id'], salt=newSalt.hex(), passwordHash=passHash.hex())
+    newUser.save()
+    return JsonResponse({'Success': 'True'})
+
+@csrf_exempt
 def user_login(request):
     if request.method != 'POST':
         return HttpResponseBadRequest
@@ -48,12 +63,6 @@ def user_login(request):
     if passHash.hex() == account.passwordHash:
         return JsonResponse({'Auth': 'True', 'User': account.user_id})
     return JsonResponse({'Auth': 'False'})
-    """
-    temp = userSearch[0]
-    temp.salt = tempsalt.hex()
-    temp.passwordHash = digest.hex()
-    temp.save()
-    """
 
 
 @csrf_exempt
