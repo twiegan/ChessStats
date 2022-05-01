@@ -1,1 +1,55 @@
-<p>register works!</p>
+<div style="text-align: center" class="container">
+    <div style="margin-top: 1%">
+      <h1>Register New User</h1>
+    </div>
+    <mat-form-field style="margin-top: 1%; margin-right: 5px" appearance="fill">
+      <mat-label>Enter User id</mat-label>
+      <input
+        matInput
+        placeholder="chessStats348"
+        [formControl]="userId"
+        maxlength="15"
+        required
+      />
+      <mat-error *ngIf="userId.invalid">{{
+        getErrorMessageUserid()
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="margin-top: 1%; margin-left: 5px" appearance="fill">
+      <mat-label>Enter Password</mat-label>
+      <input
+        matInput
+        placeholder="Password"
+        [formControl]="password"
+        minlength="8"
+        maxlength="32"
+      />
+      <mat-error *ngIf="password.invalid">{{ getErrorMessagePassword() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field style="margin-top: 1%; margin-left: 5px" appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          placeholder="Password"
+          [formControl]="confirm_pass"
+          minlength="8"
+          maxlength="32"
+        />
+        <mat-error *ngIf="password.invalid">{{ getErrorMessagePassword() }}</mat-error>
+      </mat-form-field>
+    <div class="button">
+      <button
+        style="margin-top: 1%"
+        mat-raised-button
+        color="primary"
+        [disabled]="userId.invalid || password.invalid || confirm_pass.invalid"
+        (click)="registerUser()"
+      >
+        Submit
+      </button>
+      <mat-label
+      routerLink="/login" routerLinkActive="active"
+      color="primary"
+      >Already Have and Account? Login Here!</mat-label>
+    </div>
+  </div>
