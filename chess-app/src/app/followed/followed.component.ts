@@ -1,36 +1,30 @@
 import { Component } from '@angular/core';
+import { FollowedPlayersService } from '../services/followed_players.service';
 
-export interface MatchItem {
-  match: string;
-  date: string;
-  color: string;
-  winner: string;
-}
-
-const MATCH_DATA: MatchItem[] = [
-  {match: "match1", date: "Monday 12/2/2004", color: "Black", winner: "Black Win"},
-  {match: "match2", date: "Monday 1/8/2005", color: "White", winner: "Black Win"},
-  {match: "match3", date: "Monday 4/16/2005", color: "Black", winner: "White Win"}
-];
 
 @Component({ templateUrl: 'followed.component.html', styleUrls: ['followed.component.css']})
 export class FollowedComponent {
     step = 0;
-    sampleData = [
-                  {'A': "player1", 'B': "gm", 'C': 2900},
-                  {'A': "player2", 'B': "bm", 'C': 1600},
-                  {'A': "player3", 'B': "gf", 'C': 420},
-                  {'A': "player4", 'B': "bm", 'C': 1600},
-                  {'A': "player5", 'B': "bm", 'C': 1600},
-                  {'A': "player6", 'B': "bm", 'C': 1600},
-                  {'A': "player7", 'B': "bm", 'C': 1600},
-                  {'A': "player8", 'B': "bm", 'C': 1600},
-                ];
-
+    //public user_id: any
+    //public user_id: any
     
+    public dataSource: any;
+    public user_id = 'admin';
+   
+    constructor(private service: FollowedPlayersService){
+      this.service.getFollows(this.user_id).subscribe(response => {
+        console.log(response);
+        // response.forEach(element => {
+        //   this.dataDict[Object.keys(element)[0]] = Object.values(element)[0];
+        // });
+        // console.log(this.dataDict);
 
-    displayedColumns: string[] = ['match', 'date', 'color', 'winner'];
-    dataSource = MATCH_DATA;
+        this.dataSource = response;
+      })
+
+      
+    };
+
     
   
     setStep(index: number) {
