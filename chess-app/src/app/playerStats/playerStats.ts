@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { PlayerService } from '../services/player.service';
 
-import { ChartType } from 'chart.js';
+import { ChartType, Chart } from 'chart.js';
 import { Label, MultiDataSet } from 'ng2-charts';
 
 @Component({
@@ -27,24 +27,27 @@ export class PlayerStats {
   public player_elo: any;
   public player_games_played: any;
   public player_games_won: any;
-  doughnutChartLabels: Label[] = ['Win', 'Loss'];
-  doughnutChartData: MultiDataSet = [
-    [67, 33]
-  ];
-  doughnutChartType: ChartType = 'doughnut';
+  public player_win_loss: any;
+  public player_matches: any;
+
   constructor(private service: PlayerService, private snackBar: MatSnackBar) {}
 
-  test(playerId: any) {
+  clickEvent(playerId: any) {
     this.service.getPlayer(playerId.value).subscribe(response => {
-        this.player = JSON.stringify(response, null, 4).replace(/\\n/g, "newline");
+        this.player = response;
         this.player_id = response.player_id;
         this.player_title = response.title;
         this.player_elo = response.elo;
         this.player_games_played = response.games_played;
         this.player_games_won = response.games_won;
-        console.log(response);
+        this.player_win_loss = (this.player_games_won) / (this.player_games_played - this.player_games_won);
         return this.player;
     }) 
+
+    this.service.getMatches(playerId.value).subscribe(response => {
+      this.player_matches = response;
+      return this.player_matches;
+  }) 
   }
 }
 

@@ -3,9 +3,11 @@ from calendar import weekday
 from datetime import date
 from re import M
 from django.db import models
-from django_prepared_query import PreparedManager
+# from django_prepared_query import PreparedManager
 
 # Create your models here.
+
+
 class User(models.Model):
     user_id = models.CharField(
         max_length=16,
@@ -47,6 +49,7 @@ class Player(models.Model):
         default=0
     )
 
+
 class Opening(models.Model):
     opening_id = models.IntegerField(
         max_length=11,
@@ -59,6 +62,7 @@ class Opening(models.Model):
         default=''
     )
 
+
 class Event(models.Model):
     event_id = models.IntegerField(
         max_length=11,
@@ -70,6 +74,7 @@ class Event(models.Model):
         primary_key=True,
         default=''
     )
+
 
 class Date(models.Model):
     date_utc = models.CharField(
@@ -138,7 +143,6 @@ class Match(models.Model):
         blank=False,
         default=''
     )
-
 
 
 class Test(models.Model):
