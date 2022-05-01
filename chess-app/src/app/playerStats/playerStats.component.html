@@ -1,0 +1,41 @@
+<div style="text-align: center" class="container">
+  <div style="margin-top: 1%">
+    <h1>Player Stats</h1>
+  </div>
+  <div id="myData"></div>
+  <div class="container" style="display: flex; align-items: center; justify-content: center; margin: 5px;">
+    <mat-form-field style="margin-top: 20px;" appearance="fill">
+      <mat-label>Search a player...</mat-label>
+      <input
+        matInput
+        placeholder="chessStats348"
+        [formControl]="playerId"
+        maxlength="45"
+        required
+      />
+      <mat-error *ngIf="playerId.invalid">{{
+        getErrorMessagePlayerid()
+      }}</mat-error>
+    </mat-form-field>
+    <div class="button" style="margin-left: 10px; vertical-align: middle;">
+      <button
+        style="margin-top: 1%"
+        mat-raised-button
+        color="primary"
+        [disabled]="playerId.invalid"
+        (click)="test(playerId)"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+  <div class="container" style="display: flex; margin: 5px;">
+    <div class="container" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr;">
+      <div style="margin: 3px; font-size: 28px;">Player ID:<br><br>{{ player_id || 'N/A'  }}<br></div>
+      <div style="margin: 3px; font-size: 28px;">Title:<br><br>{{ player_title || 'N/A'  }}<br></div>
+      <div style="margin: 3px; font-size: 28px;">Elo:<br><br>{{ player_elo || 'N/A'  }}<br></div>
+      <div style="margin: 10px; font-size: 28px;">Games Played: {{ player_games_played || 'N/A'  }}<br></div>
+      <div style="margin: 10px; font-size: 28px;">Win-Loss-Ratio: {{ player_win_loss || 'N/A' }}<br></div>
+    </div>
+  </div>
+</div>

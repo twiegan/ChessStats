@@ -2,20 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Player } from './player'
+import { Event } from './event'
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlayersService {
-  url = "https://infinite-river-70119.herokuapp.com/players/"
+export class EventService {
+  url = "https://infinite-river-70119.herokuapp.com/events/"
   constructor(private http: HttpClient) { }
 
-  public getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.url);
+  public getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(this.url);
   }
 
-  public addPlayer(data: any) {
+  public addEvent(data: any) {
     return this.http.post(this.url, data);
   }
 }
