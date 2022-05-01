@@ -39,6 +39,15 @@ export class PlayerEntry {
     return '';
   }
 
+  isLoggedIn() {
+    if (localStorage.getItem("user_id") == null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   private player: any;
   constructor(private service: PlayerService, private snackBar: MatSnackBar) {
     this.player = {};

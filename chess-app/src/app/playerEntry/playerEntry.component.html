@@ -42,7 +42,7 @@
       style="margin-top: 1%"
       mat-raised-button
       color="primary"
-      [disabled]="playerId.invalid || title.invalid || elo.invalid"
+      [disabled]="playerId.invalid || title.invalid || elo.invalid || isLoggedIn()"
       (click)="addPlayer()"
     >
       Submit

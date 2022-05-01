@@ -58,6 +58,15 @@ export class MatchEntry {
     return '';
   }
 
+  isLoggedIn() {
+    if (localStorage.getItem("user_id") == null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   private dateTime: any;
   private date_utc: string;
   private time_utc: string;
