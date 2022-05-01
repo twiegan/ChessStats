@@ -50,7 +50,7 @@ export class RegisterComponent {
         });
       }
       else {
-        this.snackBar.openFromComponent(failSnackBarComponent, {
+        this.snackBar.openFromComponent(failonuserSnackBarComponent, {
           duration: 2000,
         });
       }
@@ -74,6 +74,19 @@ export class RegisterComponent {
   ],
 })
 export class failSnackBarComponent { }
+
+@Component({
+  selector: 'failonuser-component',
+  templateUrl: 'failonuserIndicator.component.html',
+  styles: [
+    `
+    .snackBar {
+      color: OrangeRed;
+    }
+  `,
+  ],
+})
+export class failonuserSnackBarComponent { }
 
 @Component({
   selector: 'success-component',

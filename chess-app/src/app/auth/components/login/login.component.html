@@ -31,7 +31,7 @@
         style="margin-top: 1%"
         mat-raised-button
         color="primary"
-        [disabled]="userId.invalid || password.invalid"
+        [disabled]="userId.invalid || password.invalid || isLoggedIn()"
         (click)="loginUser()"
       >
         Submit

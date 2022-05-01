@@ -31,7 +31,7 @@
       style="margin-top: 1%"
       mat-raised-button
       color="primary"
-      [disabled]="eventId.invalid || name.invalid"
+      [disabled]="eventId.invalid || name.invalid || isLoggedIn()"
       (click)="addEvent()"
     >
       Submit

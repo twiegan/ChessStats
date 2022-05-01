@@ -141,7 +141,7 @@
       style="margin-top: 1%"
       mat-raised-button
       color="primary"
-      [disabled]="date.invalid || white.invalid || black.invalid || turns.invalid || termination.invalid || timeControl.invalid || winner.invalid || opening.invalid || event.invalid"
+      [disabled]="date.invalid || white.invalid || black.invalid || turns.invalid || termination.invalid || timeControl.invalid || winner.invalid || opening.invalid || event.invalid || isLoggedIn()"
       (click)="addMatch()"
     >
       Submit

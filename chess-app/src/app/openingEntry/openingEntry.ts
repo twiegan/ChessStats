@@ -28,6 +28,15 @@ export class OpeningEntry {
     return '';
   }
 
+  isLoggedIn() {
+    if (localStorage.getItem("user_id") == null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   private opening: any;
   constructor(private service: OpeningService, private snackBar: MatSnackBar) {
     this.opening = {};
