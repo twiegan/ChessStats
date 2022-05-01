@@ -1,10 +1,9 @@
 # from tkinter import E
 from calendar import weekday
 from datetime import date
-# from nis import match
 from re import M
 from django.db import models
-from django_prepared_query import PreparedManager
+# from django_prepared_query import PreparedManager
 
 # Create your models here.
 

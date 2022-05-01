@@ -28,6 +28,15 @@ export class EventEntry {
     return '';
   }
 
+  isLoggedIn() {
+    if (localStorage.getItem("user_id") == null) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   private event: any;
   constructor(private service: EventService, private snackBar: MatSnackBar) {
     this.event = {};

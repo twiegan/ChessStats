@@ -31,10 +31,14 @@
         style="margin-top: 1%"
         mat-raised-button
         color="primary"
-        [disabled]="userId.invalid || password.invalid"
+        [disabled]="userId.invalid || password.invalid || isLoggedIn()"
         (click)="loginUser()"
       >
         Submit
       </button>
+      <mat-label
+      routerLink="/register" routerLinkActive="active"
+      color="primary"
+      >New User? Register Here!</mat-label>
     </div>
   </div>
