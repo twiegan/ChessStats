@@ -12,7 +12,7 @@ export interface playerObj {
   games_played: number;
 }
 
-const ELEMENT_DATA: playerObj[] = [ ];
+var ELEMENT_DATA: playerObj[] = [ ];
 
 /**
  * @title Basic use of `<table mat-table>`
@@ -29,11 +29,12 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit() {
+    ELEMENT_DATA = [];
     this.refresh()
   }
 
   refresh() {
-    this.dataSource = [];
+    ELEMENT_DATA = [];
     this.service.getTopPlayers().subscribe(response => {
       for (let i = 0; i < response.length; i++) {
         let currObj = response[i]
