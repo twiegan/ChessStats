@@ -1,65 +1,33 @@
+<img src="https://user-images.githubusercontent.com/53661240/166338710-8d28b0af-223b-424d-8541-1d49b8e85bfc.png" align="right" alt="Size Limit logo by Anton Lovchikov" width="300" height="195">
+
 # ChessStats
 
-## Running the app
+<p>ChessStats is a statistics reporting website allowing users<br>
+to submit and view data from completed chess matches.</p>
 
-Run the development server locally using `python manage.py runserver`.
+# Tools
 
-The development server cannot be used to deploy to Heroku.
-Therefore, we use gunicorn.
-To run with gunicorn locally use `gunicorn chessStatsRestApi.wsgi:application`.
+- Frontend - Angular
+- Backend - Django
+- Database - MySQL
+- Authentication: Self-Made
 
-This same exact command is put into the Procfile after `web: `, which indicates the type of worker being used by Heroku.
-Heroku uses the Procfile to determine which command to run to start the app.
-Heroku can now be run locally using `heroku local`.
-If this works correctly, we should now be able to deploy to heroku remotely.
+  - In order to ensure the secure storage of user credentials, a random salt is generated for every new user that is then appended to the user's password. Upon salting the password, the concatenated string is then hashed using SHA256 to a 64 Byte length using 1000 iterations to ensure that the hash is memory hard.
 
-## Setup
+# Main Features
 
-Venv holds the dependencies the project needs to run.
-However, the actual folder itself doesn't get pushed to github, only the names and versions of the dependicies do.
-This means you need to make your own venv folder and fill it.
-The folder itself should already be in `.gitignore`.
+- Individual user log in and log out, stored and verified by the User table in the database.
+- Clean UI allowing adding entries to the Player, Event, Opening, and Match tables.
+- Retrieval and display of statistics for individual players, top players in the database, and recent matches of a user's 'followed' players.
 
-Run `python3 -m venv ./venv` from the project folder directory to create your new venv folder.
+# Database Entity-Relationship-Diagram (ERD)
 
-Run `source venv/bin/activate` to activate the venv for iOS, or `venv\Scripts\activate` for Windows.
+![Screen Shot 2022-05-02 at 6 56 19 PM](https://user-images.githubusercontent.com/53661240/166339593-7557c5be-1ee8-43d1-9e9a-4f66eea07a34.png)
 
+# Team Members
 
-The command `which python` should now show a path ending in `venv/bin/python`.
-This confirms that the app is now running in the venv.
-Additionally, the shell prompt should now display a prefix with your venv's name.
-
-The names and version numbers of all packages currently being used on the project are found in `requirements.txt`.
-You should be able to install the contents of this file with pip using the command `python -m pip install -r requirements.txt`.
-Running this command after activating the virtual environment for the project will build all of the project dependencies in the venv folder, and keep them separate from your other projects.
-
-## To add dependencies
-
-Be sure that you are currently running the venv for the project using the steps described in setup before installing a new dependency using the command `python -m pip install <dependency>`.
-
-If installed correctly, your new dependency's name and version should be added to the output of `python -m pip freeze`.
-
-Run `python -m pip freeze > requirements.txt` pipe those results to `requirements.txt` and update it with the new dependency info.
-This final step **_must_** be done before commiting and pushing to Github/Heroku or else the rest of the team won't be able to run your code and it won't deploy correctly to heroku.
-
-## To open access our db in MySQL locally
-
-Go to the app on heroku, navigate to the settings tab, and click the 'Reveal Config Vars' button. The key shown for clearDB is of the form `mysql://<username>:<password>@<hostname>/<schema>?reconnect=true`
-
-Paste each of these into their repective text entries in a new connection on MySQL workbench to connect to the database from your machine.
-
-This same process is done in `settings.py` through the use of environment variables to connect the app to the database.
-
-## To push to Github and Heroku
-
-There are two remote endpoints for this project.
-One on Github and one on Heroku.
-
-This means you have to run two separate commands at each push.
-
-The first, `git push origin master`, pushes to github like normal.
-
-
-
-The second,`heroku git:remote --app infinite-river-70119` and `git push heroku master`, pushes the code to heroku's private git repositories and redeploys the app.
-Make sure that the contents of `requirements.txt` have been updated if new dependencies were added or else this redeploy will not work.
+- Kichul Kang
+- Tiger Lee
+- Jason Paik
+- John Werner
+- Thomas Wiegand

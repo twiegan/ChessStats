@@ -14,4 +14,9 @@ import { FollowedPlayers } from './followed_players';
     public getFollows(user_id: any): Observable<FollowedPlayers[]> {
         return this.http.get<FollowedPlayers[]>(this.url + user_id)
     }
+
+    public followPlayer(data: any) {
+      this.url = "https://infinite-river-70119.herokuapp.com/follow/"
+      return this.http.post(this.url, data);
+    }
   }

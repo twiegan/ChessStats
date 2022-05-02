@@ -24,9 +24,11 @@
       Match Entry
     </button>
     </div>
+    <div *ngIf="!isHidden">
     <button mat-flat-button routerLink="/followed" color="primary">
       Followed
     </button>
+    </div>
     <button mat-flat-button routerLink="/playerStats" color="primary">
       Player Stats
     </button>

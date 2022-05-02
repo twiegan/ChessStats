@@ -4,6 +4,7 @@ from chessStats.models import Opening
 from chessStats.models import Event
 from chessStats.models import Date
 from chessStats.models import Match
+from chessStats.models import Follows
 
 from chessStats.models import Test
 
@@ -39,6 +40,13 @@ class MatchSerializer(serializers.ModelSerializer):
         model = Match
         fields = ('date_id', 'turns', 'termination', 'winner', 'black_id',
                   'white_id', 'opening_id', 'event_id', 'time_control', 'match_id')
+
+class FollowsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Follows
+        fields = ('player_id', 'username')
+        unique_together = ('player_id', 'username')
+
 
 
 class TestSerializer(serializers.ModelSerializer):

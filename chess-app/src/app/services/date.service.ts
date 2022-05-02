@@ -8,8 +8,7 @@ import { Date } from './date'
   providedIn: 'root'
 })
 export class DateService {
-  //TODO: change url to heroku later
-  url = "http://0.0.0.0:5000/dates/"
+  url = "https://infinite-river-70119.herokuapp.com/dates/"
   constructor(private http: HttpClient) { }
 
   public getDates(): Observable<Date[]> {
