@@ -273,6 +273,20 @@ def followsPlayer(request):
     return JsonResponse(follow_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
+def getTopPlayers(request):
+    if request.method == 'GET':
+        with connection.cursor() as cursor:
+            cursor.callproc("get_players_by_elo")
+
+            columns = [col[0] for col in cursor.description]
+            ret = [
+                dict(zip(columns, row))
+                for row in cursor.fetchall()
+            ]
+            print(ret, flush=True)
+            return JsonResponse(ret, safe=False)
+
+@csrf_exempt
 def test_list(request):
     if request.method == 'GET':
         shravan = Test.objects.all()

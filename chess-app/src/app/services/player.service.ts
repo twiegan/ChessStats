@@ -11,11 +11,16 @@ import { MatchWithName } from './matchWithName';
 export class PlayerService {
   url = "https://infinite-river-70119.herokuapp.com/players/"
   matchUrl = "http://infinite-river-70119.herokuapp.com/search/player/"
+  topUrl = "http://infinite-river-70119.herokuapp.com/topPlayers/"
   ret: any
   constructor(private http: HttpClient) { }
 
   public getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(this.url);
+  }
+
+  public getTopPlayers(): Observable<Player[]> {
+    return this.http.get<Player[]>(this.topUrl)
   }
 
   public getPlayer(playerId: any): Observable<Player> {

@@ -14,5 +14,6 @@ urlpatterns = [
   re_path(r'^search/player/(?P<player_id>.*)$', views.searchByPlayerId),
   re_path(r'^search/follow/(?P<user_id>.*)$', views.getFollowedPlayers),
   re_path(r'^follow/', views.followsPlayer),
+  re_path(r'^topPlayers/', views.getTopPlayers),
   re_path(r'^test/$', views.test_list)
 ]

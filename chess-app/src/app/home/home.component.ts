@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit{
 
   refresh() {
     this.dataSource = [];
-    this.service.getPlayers().subscribe(response => {
+    this.service.getTopPlayers().subscribe(response => {
       for (let i = 0; i < response.length; i++) {
         let currObj = response[i]
         if (currObj.elo != null) {
