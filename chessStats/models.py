@@ -145,6 +145,16 @@ class Match(models.Model):
     )
 
 
+class Follows(models.Model):
+    player_id = models.CharField(
+        max_length=45,
+        blank=False,
+    )
+    username = models.CharField(
+        max_length=45,
+        blank=False,
+    )
+
 class Test(models.Model):
     Shravan = models.IntegerField(
         primary_key=True,

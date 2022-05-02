@@ -23,6 +23,8 @@ from chessStats.models import Date
 from chessStats.serializers import DateSerializer
 from chessStats.models import Match
 from chessStats.serializers import MatchSerializer
+from chessStats.models import Follows
+from chessStats.serializers import FollowsSerializer
 
 from chessStats.models import Test
 from chessStats.serializers import TestSerializer
@@ -65,7 +67,7 @@ def user_login(request):
     return JsonResponse({'Auth': 'False'})
 
 
-@csrf_exempt
+#@csrf_exempt
 def player_list(request):
     if request.method == 'GET':
         players = Player.objects.all()
@@ -257,6 +259,18 @@ def getFollowedPlayers(request, user_id):
                 responses[player_id['player_id']] = ret2
             return JsonResponse(responses, safe=False)
 
+
+@csrf_exempt
+def followsPlayer(request):
+    if request.method == 'POST':
+        print('trying to follow player', request.body, flush=True)
+        follow_data = JSONParser().parse(request)
+        follow_serializer = FollowsSerializer(data=follow_data)
+        if follow_serializer.is_valid():
+            follow_serializer.save()
+            return JsonResponse(follow_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(follow_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return JsonResponse(follow_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 def test_list(request):
