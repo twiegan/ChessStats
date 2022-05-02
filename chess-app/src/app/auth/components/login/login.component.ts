@@ -27,6 +27,15 @@ export class LoginComponent {
     return '';
   }
 
+  isLoggedIn() {
+    if (localStorage.getItem("user_id") == null) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   private user: any;
   constructor(private service: UserService, private snackBar: MatSnackBar) {
     this.user = {};

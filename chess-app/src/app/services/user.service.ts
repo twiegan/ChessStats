@@ -8,7 +8,8 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class UserService {
-  url = "https://infinite-river-70119.herokuapp.com/"//http://127.0.0.1:8000/"
+  url = "https://infinite-river-70119.herokuapp.com/"
+  //url = "http://127.0.0.1:8000/"
   constructor(private http: HttpClient) { }
 
   public loginUser(data: any) {
@@ -17,5 +18,9 @@ export class UserService {
 
   public registerUser(data: any) {
     return this.http.post(this.url + "register/", data);
+  }
+
+  public resetUser(data: any) {
+    return this.http.post(this.url + "reset/", data);
   }
 }

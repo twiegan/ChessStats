@@ -235,6 +235,30 @@ def searchByPlayerId(request, player_id):
 
 
 @csrf_exempt
+def getFollowedPlayers(request, user_id):
+    if request.method == 'GET':
+        with connection.cursor() as cursor:
+            cursor.callproc("get_followed_players", {user_id})
+
+            columns = [col[0] for col in cursor.description]
+            ret = [
+                dict(zip(columns, row))
+                for row in cursor.fetchall()
+            ]
+            print(ret, flush=True)
+            responses = {}
+            for player_id in ret:
+                cursor.callproc("searchByPlayerId", {player_id['player_id']})
+                columns2 = [col[0] for col in cursor.description]
+                ret2 = [
+                    dict(zip(columns2, row))
+                    for row in cursor.fetchall()
+                ]
+                responses[player_id['player_id']] = ret2
+            return JsonResponse(responses, safe=False)
+
+
+@csrf_exempt
 def test_list(request):
     if request.method == 'GET':
         shravan = Test.objects.all()

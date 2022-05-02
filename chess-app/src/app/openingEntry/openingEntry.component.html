@@ -31,7 +31,7 @@
       style="margin-top: 1%"
       mat-raised-button
       color="primary"
-      [disabled]="openingId.invalid || name.invalid"
+      [disabled]="openingId.invalid || name.invalid || isLoggedIn()"
       (click)="addOpening()"
     >
       Submit
