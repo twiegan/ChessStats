@@ -10,8 +10,8 @@ import { MatchWithName } from './matchWithName';
 })
 export class PlayerService {
   url = "https://infinite-river-70119.herokuapp.com/players/"
-  matchUrl = "http://infinite-river-70119.herokuapp.com/search/player/"
-  topUrl = "http://infinite-river-70119.herokuapp.com/topPlayers/"
+  matchUrl = "https://infinite-river-70119.herokuapp.com/search/player/"
+  topUrl = "https://infinite-river-70119.herokuapp.com/topPlayers/"
   ret: any
   constructor(private http: HttpClient) { }
 
