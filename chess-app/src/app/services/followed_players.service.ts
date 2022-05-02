@@ -8,7 +8,7 @@ import { FollowedPlayers } from './followed_players';
     providedIn: 'root'
   })
   export class FollowedPlayersService {
-    url = "http://127.0.0.1:8000/search/follow/"
+    url = "https://infinite-river-70119.herokuapp.com/matches/search/follow/"
     constructor(private http: HttpClient) { }
 
     public getFollows(user_id: any): Observable<FollowedPlayers[]> {
