@@ -2,7 +2,8 @@
 .example-headers-align .mat-expansion-panel-header-description, .mat-divider {
   flex-basis: 0;
   color:aliceblue;
-  font-size: large;
+  font-size: x-large;
+  font-style: italic;
 }
 
 .mat-expansion-panel {
@@ -21,4 +22,6 @@
 .mat-list-item {
   margin-left: 20px;
   color:aliceblue;
+  font-size: large;
+  font-kerning: normal;
 }
