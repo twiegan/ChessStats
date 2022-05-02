@@ -8,10 +8,15 @@ import { FollowedPlayers } from './followed_players';
     providedIn: 'root'
   })
   export class FollowedPlayersService {
-    url = "https://infinite-river-70119.herokuapp.com/matches/search/follow/"
+    url = "https://infinite-river-70119.herokuapp.com/search/follow/"
     constructor(private http: HttpClient) { }
 
     public getFollows(user_id: any): Observable<FollowedPlayers[]> {
         return this.http.get<FollowedPlayers[]>(this.url + user_id)
+    }
+
+    public followPlayer(data: any) {
+      this.url = "https://infinite-river-70119.herokuapp.com/follow/"
+      return this.http.post(this.url, data);
     }
   }

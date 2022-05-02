@@ -8,7 +8,7 @@ import { MatchWithName } from './matchWithName'
   providedIn: 'root'
 })
 export class MatchService {
-  url = "http://0.0.0.0:5000/matches/"
+  url = "https://infinite-river-70119.herokuapp.com/matches/"
   constructor(private http: HttpClient) { }
 
   public getMatches(): Observable<MatchWithName[]> {
