@@ -2,4 +2,28 @@
    display: flex;
    align-items: center;
    justify-content: center;
- }
+}
+
+table {
+   width: 80%;
+}
+
+.mat-column-player {
+   text-align: center;
+   width: 35%;
+}
+
+.mat-column-elo {
+   text-align: center;
+   width: 25%;
+}
+
+.mat-column-games_won {
+   text-align: center;
+   width: 20%;
+}
+
+.mat-column-games_played {
+   text-align: center;
+   width: 20%;
+}
