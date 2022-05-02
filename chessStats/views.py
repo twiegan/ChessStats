@@ -67,7 +67,7 @@ def user_login(request):
     return JsonResponse({'Auth': 'False'})
 
 
-#@csrf_exempt
+@csrf_exempt
 def player_list(request):
     if request.method == 'GET':
         players = Player.objects.all()

@@ -17,7 +17,6 @@ import { FollowedPlayers } from './followed_players';
 
     public followPlayer(data: any) {
       this.url = "https://infinite-river-70119.herokuapp.com/follow/"
-      console.log("trying to print in servcie", data);
       return this.http.post(this.url, data);
     }
   }
