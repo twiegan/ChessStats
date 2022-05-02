@@ -6,8 +6,15 @@
   font-style: italic;
 }
 
-.mat-expansion-panel {
+.mat-expansion-panel, .container {
   background-color:#3f51b5;
+  color: aliceblue;
+}
+
+.page-title {
+  text-align: left;
+  margin-left: 2%;
+  font-size: xx-large;
 }
 
 .example-headers-align .mat-expansion-panel-header-description {
@@ -24,4 +31,21 @@
   color:aliceblue;
   font-size: large;
   font-kerning: normal;
+}
+
+.mat-form-field {
+  text-align: center;
+  size: 5cm;
+  color:aliceblue;
+  width: 50%;
+  height: 50%;
+  border-color: aliceblue;
+  font-size: large;
+}
+
+.mat-label, .mat-input-element {
+  text-align: center;
+  size: 5cm;
+  color:aliceblue;
+  /* background-color: aliceblue; */
 }
